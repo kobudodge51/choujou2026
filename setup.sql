@@ -1,0 +1,14 @@
+create table if not exists cj26_results (key text primary key, a int not null, b int not null, w text, updated_at timestamptz not null default now());
+create table if not exists cj26_settings (id int primary key default 1 check (id = 1), adj jsonb not null default '{}'::jsonb);
+insert into cj26_settings (id, adj) values (1, '{}'::jsonb) on conflict (id) do nothing;
+alter table cj26_results enable row level security;
+alter table cj26_settings enable row level security;
+create policy "cj26 results read" on cj26_results for select using (true);
+create policy "cj26 settings read" on cj26_settings for select using (true);
+create or replace function cj26_ok(p_id text, p_pw text) returns boolean language sql immutable as $$ select md5(p_id || '|' || p_pw) = '1898dcc1fe73f90e8c5a15edefe04c9f' $$;
+create or replace function cj26_login(p_id text, p_pw text) returns boolean language sql security definer set search_path = public as $$ select cj26_ok(p_id, p_pw) $$;
+create or replace function cj26_save_result(p_id text, p_pw text, p_key text, p_a int, p_b int, p_w text) returns void language plpgsql security definer set search_path = public as $$ begin if not cj26_ok(p_id, p_pw) then raise exception 'not allowed'; end if; insert into cj26_results (key, a, b, w, updated_at) values (p_key, p_a, p_b, p_w, now()) on conflict (key) do update set a = excluded.a, b = excluded.b, w = excluded.w, updated_at = now(); end $$;
+create or replace function cj26_delete_result(p_id text, p_pw text, p_key text) returns void language plpgsql security definer set search_path = public as $$ begin if not cj26_ok(p_id, p_pw) then raise exception 'not allowed'; end if; delete from cj26_results where key = p_key; end $$;
+create or replace function cj26_save_adj(p_id text, p_pw text, p_adj jsonb) returns void language plpgsql security definer set search_path = public as $$ begin if not cj26_ok(p_id, p_pw) then raise exception 'not allowed'; end if; update cj26_settings set adj = p_adj where id = 1; end $$;
+grant execute on function cj26_login(text, text), cj26_save_result(text, text, text, int, int, text), cj26_delete_result(text, text, text), cj26_save_adj(text, text, jsonb) to anon, authenticated;
+alter publication supabase_realtime add table cj26_results, cj26_settings;
