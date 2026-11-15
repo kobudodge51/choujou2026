@@ -371,9 +371,12 @@ function viewTour(C){
   h+=bracket4(C,'13〜16位','13A','13B','19A','19B',['13位','14位','15位','16位']);
   h+=bracket4(C,'17〜20位','8A','8B','18A','18B',['17位','18位','19位','20位']);
   h+=bracket4(C,'21〜24位','7A','7B','17A','17B',['21位','22位','23位','24位']);
-  h+='<h2>1回戦・2回戦</h2><div class="courts">';
-  for(var i=1;i<=12;i++){h+=tCard(C,i+'A')+tCard(C,i+'B')}
-  return h+'</div>';
+  var RND=[['1回戦（第1〜6試合）',1,6],['2回戦（第7〜12試合）',7,12],['3回戦・準決勝（第13〜16試合）',13,16],['順位決定戦・3位決定戦・決勝（第17〜23試合）',17,23]];
+  RND.forEach(function(r){
+    h+='<h2>'+r[0]+'</h2>';
+    for(var i=r[1];i<=r[2];i++){h+='<div class="courts">'+(C.T[i+'A']?tCard(C,i+'A'):'<div class="match empty">－</div>')+(C.T[i+'B']?tCard(C,i+'B'):'<div class="match empty">－</div>')+'</div>'}
+  });
+  return h;
 }
 function viewInfo(){
   return '<div class="card"><h2>大会概要</h2><dl class="info"><dt>大会名</dt><dd>頂上決戦2026</dd><dt>日時</dt><dd>2026年11月15日（日）</dd><dt>会場</dt><dd>プロシードアリーナHIKONE（滋賀県彦根市）</dd><dt>参加</dt><dd>24チーム（6リーグ×4チーム）</dd><dt>監督会議</dt><dd>8時30分頃より 競技フロア本部前</dd></dl></div>'+
