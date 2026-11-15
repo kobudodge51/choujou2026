@@ -199,6 +199,7 @@ h3.lg .done{font-size:10px;background:var(--ok-soft);color:var(--ok);border-radi
 .adj{display:flex;gap:4px;margin-top:3px}.mini{font-size:10.5px;padding:3px 7px;border:1px solid var(--violet);color:var(--violet);background:#fff;border-radius:999px;cursor:pointer}
 .vpick{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;font-weight:700}
 .courts>.match{min-width:0}
+.bk .wn{font-weight:700;fill:var(--ink)}.bk .ls{fill:#9AA0B8}.bk .sct2{font-weight:700;fill:var(--pink)}.champline{font-size:13px}.champline b{font-size:16px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 </style>
 </head>
 <body>
@@ -360,11 +361,42 @@ function bracket4(C,title,r1a,r1b,fin,third,places){
   if(H){ h+='<text x="'+cx+'" y="'+(yB+76)+'" font-size="9.5" text-anchor="middle" class="sub">'+places[2]+'：'+(H.win?esc(H.win):'—')+'　'+places[3]+'：'+(H.lose?esc(H.lose):'—')+'（'+third.replace(/(\d+)([AB])/,'$2 第$1試合')+'）</text>'; }
   return '<div class="card"><h3 class="lg">'+esc(title)+'</h3>'+h+'</svg></div>';
 }
+
+// 全体のトーナメント表（左に出場チーム、右へ勝ち上がり）
+function fullBracket(C,rootId,title,champ){
+  var T=C.T, W=360, x0=118, leafGap=30, top=14;
+  function depth(id){var t=T[id];if(!t)return 0;var m=0;['ca','cb'].forEach(function(k){var r=/^W(\d+[AB])$/.exec(t[k]||'');if(r)m=Math.max(m,depth(r[1])+1)});return m}
+  var D=depth(rootId)+1, step=(W-24-x0)/D, leaves=0, body='';
+  function jx(d){return x0+(D-d)*step}
+  function draw(id,d){
+    var t=T[id], ys={};
+    ['a','b'].forEach(function(side){
+      var code=t['c'+side], r=/^W(\d+[AB])$/.exec(code||''), y, fx, kind;
+      if(r&&T[r[1]]){var ch=draw(r[1],d+1);y=ch.y;fx=jx(d+1);kind=ch.done?(pc(t,side)||'win'):null}
+      else{y=top+leafGap*(leaves++)+leafGap/2;fx=x0;kind=pc(t,side);var n=t[side];
+        var z=11.5;var lab=n||label(code);while(z>7.5&&est(lab,z)>x0-8)z-=0.5;
+        body+='<text x="'+(x0-5)+'" y="'+(y+4)+'" font-size="'+z+'" text-anchor="end"'+(n?(t.win===n?' class="wn"':(t.lose===n?' class="ls"':'')):' class="sub"')+'>'+esc(lab)+'</text>'}
+      ys[side]=y;
+      body+=seg(fx+','+y+' '+jx(d)+','+y,kind);
+      if(t.v){var sv=side==='a'?t.v.a:t.v.b;body+='<text x="'+(jx(d)-7)+'" y="'+(y-4)+'" font-size="10" text-anchor="end" class="sct2">'+sv+(t.v.a===t.v.b&&t.v.w===side?'V':'')+'</text>'}
+    });
+    var ym=(ys.a+ys.b)/2;
+    body=seg(jx(d)+','+ys.a+' '+jx(d)+','+ym,pc(t,'a'))+seg(jx(d)+','+ys.b+' '+jx(d)+','+ym,pc(t,'b'))+body;
+    body+='<text x="'+(jx(d)+3)+'" y="'+(ym-4)+'" font-size="7.5" class="sub">'+id.replace(/(\d+)([AB])/,'$2$1')+'</text>';
+    return {y:ym,done:!!t.win};
+  }
+  var r=draw(rootId,0);
+  body+=seg(jx(0)+','+r.y+' '+(W-6)+','+r.y,r.done?'win':null);
+  var H=top*2+leafGap*leaves, w=T[rootId]&&T[rootId].win;
+  return '<div class="card"><h3 class="lg">'+esc(title)+'</h3><div class="champline">'+champ+'：<b>'+(w?esc(w):'未確定')+'</b></div><svg class="bk" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(title)+'">'+body+'</svg><p class="note">線の上の数字は内野数（VはVポイント勝ち）、小さい記号（A3など）はコートと試合番号です。</p></div>';
+}
 function tCard(C,id){var t=C.T[id];if(!t)return '';var v=t.v,aw=t.aw;
   return '<div class="match"><span class="court '+id.slice(-1).toLowerCase()+'"><i>'+id.slice(-1)+'</i><span class="stage">第'+id.slice(0,-1)+'試合'+(STAGE[id]?'・'+STAGE[id]:'')+'</span></span>'+teamRow(t.a,label(t.ca),v?v.a:null,aw===true,v&&v.a===v.b&&v.w==='a'?'<small class="vp">V</small>':'')+teamRow(t.b,label(t.cb),v?v.b:null,aw===false,v&&v.a===v.b&&v.w==='b'?'<small class="vp">V</small>':'')+'</div>'}
 function viewTour(C){
   var h='<div style="display:grid;gap:6px"><h2>順位決定トーナメント</h2><p class="note">'+(C.allDone?'予選の順位が確定しました。':'予選リーグがすべて終わると、チーム名が自動で入ります。')+' 全24チームの順位を決めます。</p><div class="legend"><span><i style="background:var(--path-win)"></i>勝ち上がり</span><span><i style="background:var(--path-lose)"></i>敗退</span><span><small class="vp">V</small>Vポイントで勝利</span></div></div>';
   h+='<div class="card"><h3 class="lg">最終順位</h3><ol class="rank-list">'+C.final.map(function(n,i){return '<li><span class="rk'+(i===0?' rk1':'')+'">'+(i+1)+'位</span><span class="tn'+(n?'':' ph')+'">'+(n?nm(n):'未確定')+'</span></li>'}).join('')+'</ol></div>';
+  h+=fullBracket(C,'23A','上位トーナメント（1〜16位の勝ち上がり・全体）','優勝');
+  h+=fullBracket(C,'18A','下位トーナメント（17〜24位の勝ち上がり・全体）','17位');
   h+=bracket4(C,'1〜4位（準決勝・決勝）','16A','16B','23A','22A',['優勝','準優勝','3位','4位']);
   h+=bracket4(C,'5〜8位','15A','15B','21A','21B',['5位','6位','7位','8位']);
   h+=bracket4(C,'9〜12位','14A','14B','20A','20B',['9位','10位','11位','12位']);
