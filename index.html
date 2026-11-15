@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>頂上決戦2026 速報</title>
 <meta name="description" content="頂上決戦2026（2026年11月15日・プロシードアリーナHIKONE）の試合進行・予選リーグ・順位決定トーナメント速報">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#0E1C2E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap">
 <script>
 window.CJ_CONFIG = {
   SUPABASE_URL: "https://reyffxawdgpqffdygucb.supabase.co",
@@ -217,6 +218,101 @@ h3.lg .done{font-size:10px;background:var(--ok-soft);color:var(--ok);border-radi
 @media (prefers-reduced-motion:reduce){.refresh,.refresh::after,.refresh .ring{animation:none}}
 
 .bk .wn{font-weight:700;fill:var(--ink)}.bk .ls{fill:#9AA0B8}.bk .sct2{font-weight:700;fill:var(--pink)}.champline{font-size:13px}.champline b{font-size:16px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ===== 大航海テーマ：古い海図の羊皮紙・羅針盤・ロープ・財宝の金 ===== */
+:root{
+  --bg:#EFE2C4;--surface:#FBF4E2;--ink:#2B1B10;--muted:#7A6145;--line:#D9C49C;--grid:rgba(120,80,30,.07);
+  --pink:#B3261E;--violet:#1F3B5C;--cyan:#2E7D9A;--sun:#C8931E;
+  --gold1:#F6D77A;--gold2:#C8931E;--gold3:#8A5A12;--navy:#14263D;--sea:#1E4E6E;--rope:#A47C48;
+  --court-a:#1F4F7A;--court-b:#A3271F;--court-a-soft:rgba(46,125,154,.10);
+  --win:#1F6B3A;--warn:#A3271F;--ok:#1F6B3A;--ok-soft:#E3EFD9;
+  --path-win:#C81E1E;--path-lose:#2F9FD6;--path-none:#CDB78C;
+  --grad:linear-gradient(90deg,var(--gold3),var(--gold1) 50%,var(--gold2));
+  --head:"Zen Antique","Hiragino Mincho ProN","Yu Mincho",serif;
+}
+body{background:
+  radial-gradient(120% 60% at 50% -10%,rgba(255,250,235,.85),transparent 60%),
+  radial-gradient(60% 40% at 0% 100%,rgba(120,80,30,.18),transparent 70%),
+  radial-gradient(60% 40% at 100% 70%,rgba(120,80,30,.14),transparent 70%),
+  repeating-linear-gradient(0deg,rgba(120,80,30,.025) 0 2px,transparent 2px 5px),
+  linear-gradient(var(--grid) 1px,transparent 1px) 0 0/100% 40px,
+  linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/40px 100%,
+  var(--bg)}
+body::before{background:var(--navy)}
+/* 見出し：夜の海に浮かぶ大会名 */
+header.top{background:linear-gradient(180deg,#0E1C2E,#1B3A5A);color:#F7E9C6;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 6px 18px rgba(14,28,46,.35)}
+header.top::after{height:12px;bottom:-11px;background:
+  radial-gradient(14px 10px at 14px 0,#1B3A5A 98%,transparent 100%) 0 0/28px 12px repeat-x;animation:none}
+.top .wrap{position:relative}
+.compass{position:absolute;right:max(10px,env(safe-area-inset-right,0px));top:8px;width:64px;height:64px;opacity:.9}
+@media (prefers-reduced-motion:no-preference){.compass .needle{transform-origin:32px 32px;animation:sway 6s ease-in-out infinite}}
+@keyframes sway{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(14deg)}}
+.brand{padding-right:70px}
+.brand h1{font-family:var(--head);font-style:normal;font-weight:400;font-size:32px;letter-spacing:.08em;
+  background:linear-gradient(180deg,#FFF4C8,#F2C95A 45%,#B97A1C 55%,#F6D77A);-webkit-background-clip:text;background-clip:text;color:transparent;animation:none;
+  filter:drop-shadow(0 2px 0 rgba(0,0,0,.35))}
+.brand .sub{color:#E9D7AC;font-size:11.5px;letter-spacing:.06em}
+.meta{color:#CFE3EE}
+.live.on{background:#6FD39A}
+/* 見出し（h2）：羅針の印 */
+h2{font-family:var(--head);font-weight:400;letter-spacing:.08em;color:var(--navy)}
+h2::before{width:16px;height:16px;border-radius:0;background:none;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z'/%3E%3C/svg%3E") center/contain no-repeat;
+  background-color:var(--gold2)}
+h3.lg{font-family:var(--head);font-weight:400;letter-spacing:.06em;color:var(--navy)}
+/* カード：古い紙＋ロープの縁 */
+.match,.card{background:linear-gradient(180deg,#FFF9EA,#F6EACB) padding-box,linear-gradient(135deg,#B88A4E,#E8D3A4 40%,#A47C48) border-box;
+  border:2px solid transparent;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 6px 16px rgba(80,50,15,.14)}
+.card{border-radius:14px}
+.match{border-radius:12px}
+.match.empty{background:rgba(255,250,235,.4);border:2px dashed var(--line)}
+.courthead span{font-family:var(--head);font-weight:400;letter-spacing:.2em;box-shadow:0 3px 0 rgba(0,0,0,.18)}
+.courthead .a{background:linear-gradient(180deg,#2A6492,#173E61)}.courthead .b{background:linear-gradient(180deg,#B8352C,#7E1B16)}
+.court.a i{background:var(--court-a)}.court.b i{background:var(--court-b)}
+.time{font-family:var(--head);font-style:normal;font-weight:400;background:none;color:var(--gold3);-webkit-text-fill-color:var(--gold3)}
+.slot-h .lbl{color:var(--muted)}
+.sc{font-family:var(--head);font-style:normal;font-weight:400;color:#B9A27A}
+.row.w .tn{color:var(--ink)}.row.w .sc{color:var(--pink)}
+.row.w .tn::after{content:"勝";font-style:normal;background:linear-gradient(180deg,#D23A2E,#8E1E17);border-radius:50%;width:16px;height:16px;display:inline-grid;place-items:center;padding:0;font-size:9.5px;letter-spacing:0;vertical-align:1px}
+.pill{background:linear-gradient(180deg,#D23A2E,#8E1E17);box-shadow:0 0 0 2px rgba(255,240,200,.8)}
+.break{background:linear-gradient(90deg,#14263D,#1E4E6E);color:#F7E9C6;font-family:var(--head);font-weight:400;letter-spacing:.12em;border:2px solid #A47C48}
+.break .time{color:var(--gold1);-webkit-text-fill-color:var(--gold1)}
+.tbl-wrap{background:#FFF9EA;border-color:var(--line)}
+th{background:#EADBB8;color:var(--gold3)}
+.rk{font-family:var(--head);font-style:normal;font-weight:400}.rk1{color:var(--pink)}
+.adv td{background:rgba(46,125,154,.09)}
+.mx thead th{color:var(--sea)}
+.mx td.name .no{color:var(--sea)}
+h3.lg .done{background:var(--ok-soft);color:var(--ok)}
+.champline b{font-family:var(--head);font-weight:400;font-size:20px;background:linear-gradient(180deg,#F6D77A,#C8931E 55%,#8A5A12);-webkit-background-clip:text;background-clip:text;color:transparent}
+.bk text{fill:var(--ink)}.bk .box{fill:#FFF9EA;stroke:#B88A4E}.bk .scbg{fill:var(--navy)}.bk .sct2{fill:var(--pink)}
+.bk .ls{fill:#B09A74}
+.legend{color:var(--muted)}
+.vp{background:var(--sea)}
+.sel,input[type=text],input[type=password],input[type=number]{background:#FFFBF0;border-color:var(--line)}
+.btn{background:#FFF9EA;border-color:var(--line)}
+.btn.primary{background:linear-gradient(180deg,#F6D77A,#C8931E 60%,#9C6A18);color:#2B1B10;border-color:#8A5A12;box-shadow:0 3px 0 #6E4610,0 6px 14px rgba(138,90,18,.35)}
+.progress b{background:linear-gradient(90deg,#8A5A12,#F6D77A,#C8931E)}
+.adminbar{background:linear-gradient(90deg,#7E1B16,#B8352C)}
+.adminbar::before{background:linear-gradient(180deg,#F6D77A,#C8931E)}
+.toast{background:var(--navy);color:#F7E9C6;border:1px solid var(--gold2);box-shadow:0 8px 24px rgba(14,28,46,.4)}
+/* 下のメニュー：船の甲板 */
+.bottomnav{background:linear-gradient(180deg,#6B4826,#4A2F17);border-top:0}
+.bottomnav::before{height:4px;inset:-4px 0 auto;background:repeating-linear-gradient(90deg,#C9A36A 0 10px,#8E6A3A 10px 12px)}
+.bottomnav button{color:#E6CFA0}
+.bottomnav button[aria-current="page"]{color:#FFE48A}
+.bottomnav button[aria-current="page"] svg{filter:drop-shadow(0 0 6px rgba(255,214,110,.75))}
+/* 更新ボタン：金の財宝 */
+.refresh{background:linear-gradient(110deg,#8A5A12,#F6D77A 30%,#C8931E 55%,#FFF1B8 75%,#8A5A12);background-size:300% 100%;color:#2B1B10;
+  box-shadow:0 8px 22px rgba(80,50,15,.45),0 0 0 3px #4A2F17,0 0 0 5px #C9A36A}
+.refresh svg{filter:none}
+.refresh .ring{border-color:rgba(200,147,30,.7)}
+.refresh.done{background:linear-gradient(110deg,#1F6B3A,#3FA068);color:#fff}
+.linkbtn{color:var(--muted)}
+.rank-list li:nth-child(1) .rk{color:#B8860B;font-size:22px}.rank-list li:nth-child(2) .rk{color:#7D8A96;font-size:20px}.rank-list li:nth-child(3) .rk{color:#A0522D;font-size:19px}
+.rank-list li:nth-child(-n+3) .tn{font-size:16px}
+.top .wrap{padding-block:12px 4px}
 </style>
 </head>
 <body>
@@ -326,11 +422,11 @@ function matchHTML(m,nextKey){
 function viewSched(C){
   var ms=matches(C), nextKey=null;
   ms.forEach(function(m){if(!nextKey&&m.a&&m.b&&!sc(m.key))nextKey=m.key});
-  var h='<div style="display:grid;gap:8px"><h2>試合進行表</h2><p class="note">予選・順位決定トーナメントは5分1セットマッチ、決勝戦は5分3セットマッチ。数字は試合終了時の内野人数です。チームを選ぶとそのチームの試合が分かります。</p>'+
+  var h='<div style="display:grid;gap:8px"><h2>航海日誌｜試合進行表</h2><p class="note">予選・順位決定トーナメントは5分1セットマッチ、決勝戦は5分3セットマッチ。数字は試合終了時の内野人数です。チームを選ぶとそのチームの試合が分かります。</p>'+
    '<select id="team-filter" class="sel" aria-label="チームで絞り込む"><option value="">全チームを表示</option>'+LK.map(function(l){return '<optgroup label="'+l+'リーグ">'+LEAGUES[l].map(function(n){return '<option'+(filter===n?' selected':'')+'>'+esc(n)+'</option>'}).join('')+'</optgroup>'}).join('')+'</select></div>';
   h+='<div class="courthead" aria-hidden="true"><span class="a">Aコート</span><span class="b">Bコート</span></div>';
   for(var s=0;s<41;s++){
-    if(s===18) h+='<div class="break">予選リーグの結果発表 → 順位決定トーナメント</div>';
+    if(s===18) h+='<div class="break">予選リーグの結果発表 → 順位決定トーナメントへ出航</div>';
     var row=ms.filter(function(m){return m.slot===s}); if(!row.length) continue;
     if(filter&&!row.some(function(m){return m.a===filter||m.b===filter})) continue;
     var A=row.filter(function(m){return m.court==='A'})[0]||null,B=row.filter(function(m){return m.court==='B'})[0]||null;
@@ -339,7 +435,7 @@ function viewSched(C){
   return h;
 }
 function viewLeague(C){
-  var h='<div style="display:grid;gap:6px"><h2>予選リーグ</h2><p class="note">'+C.played+' / 36 試合終了（本部の記録表'+(sheetAt?' '+sheetAt+' 取得':' '+BASE_AT+' 時点')+'）。勝ち2点・引き分け1点・負け0点。順位は「勝点 → 内野数の合計」で決まり、同じ場合は本部が判断します。</p></div>';
+  var h='<div style="display:grid;gap:6px"><h2>6つの海｜予選リーグ</h2><p class="note">'+C.played+' / 36 試合終了（本部の記録表'+(sheetAt?' '+sheetAt+' 取得':' '+BASE_AT+' 時点')+'）。勝ち2点・引き分け1点・負け0点。順位は「勝点 → 内野数の合計」で決まり、同じ場合は本部が判断します。</p></div>';
   LK.forEach(function(l){
     var arr=C.lg[l];
     h+='<div class="card"><h3 class="lg">'+l+'リーグ'+(C.leagueDone[l]?'<span class="done">確定</span>':'')+'</h3><div class="tbl-wrap"><table class="tbl-fit"><colgroup><col style="width:10%"><col style="width:36%"><col style="width:8%"><col style="width:8%"><col style="width:8%"><col style="width:10%"><col style="width:10%"><col style="width:10%"></colgroup><thead><tr><th>順位</th><th class="name">チーム</th><th>勝</th><th>負</th><th>分</th><th>勝点</th><th>内野</th><th>相手<br>内野</th></tr></thead><tbody>'+
@@ -412,7 +508,7 @@ function fullBracket(C,rootId,title,champ){
 function tCard(C,id){var t=C.T[id];if(!t)return '';var v=t.v,aw=t.aw;
   return '<div class="match"><span class="court '+id.slice(-1).toLowerCase()+'"><i>'+id.slice(-1)+'</i><span class="stage">第'+id.slice(0,-1)+'試合'+(STAGE[id]?'・'+STAGE[id]:'')+'</span></span>'+teamRow(t.a,label(t.ca),v?v.a:null,aw===true,v&&v.a===v.b&&v.w==='a'?'<small class="vp">V</small>':'')+teamRow(t.b,label(t.cb),v?v.b:null,aw===false,v&&v.a===v.b&&v.w==='b'?'<small class="vp">V</small>':'')+'</div>'}
 function viewTour(C){
-  var h='<div style="display:grid;gap:6px"><h2>順位決定トーナメント</h2><p class="note">'+(C.allDone?'予選の順位が確定しました。':'予選リーグがすべて終わると、チーム名が自動で入ります。')+' 全24チームの順位を決めます。</p><div class="legend"><span><i style="background:var(--path-win)"></i>勝ち上がり</span><span><i style="background:var(--path-lose)"></i>敗退</span><span><small class="vp">V</small>Vポイントで勝利</span></div></div>';
+  var h='<div style="display:grid;gap:6px"><h2>頂上への航路</h2><p class="note" style="margin-top:-4px">順位決定トーナメント</p><p class="note">'+(C.allDone?'予選の順位が確定しました。':'予選リーグがすべて終わると、チーム名が自動で入ります。')+' 全24チームの順位を決めます。</p><div class="legend"><span><i style="background:var(--path-win)"></i>勝ち上がり</span><span><i style="background:var(--path-lose)"></i>敗退</span><span><small class="vp">V</small>Vポイントで勝利</span></div></div>';
   h+='<div class="card"><h3 class="lg">最終順位</h3><ol class="rank-list">'+C.final.map(function(n,i){return '<li><span class="rk'+(i===0?' rk1':'')+'">'+(i+1)+'位</span><span class="tn'+(n?'':' ph')+'">'+(n?nm(n):'未確定')+'</span></li>'}).join('')+'</ol></div>';
   h+=fullBracket(C,'23A','上位トーナメント（1〜16位の勝ち上がり・全体）','優勝');
   h+=fullBracket(C,'18A','下位トーナメント（17〜24位の勝ち上がり・全体）','17位');
@@ -430,7 +526,7 @@ function viewTour(C){
   return h;
 }
 function viewInfo(){
-  return '<div class="card"><h2>大会概要</h2><dl class="info"><dt>大会名</dt><dd>頂上決戦2026</dd><dt>日時</dt><dd>2026年11月15日（日）</dd><dt>会場</dt><dd>プロシードアリーナHIKONE（滋賀県彦根市）</dd><dt>参加</dt><dd>24チーム（6リーグ×4チーム）</dd><dt>監督会議</dt><dd>8時30分頃より 競技フロア本部前</dd></dl></div>'+
+  return '<div class="card"><h2>航海のしおり｜大会概要</h2><dl class="info"><dt>大会名</dt><dd>頂上決戦2026</dd><dt>日時</dt><dd>2026年11月15日（日）</dd><dt>会場</dt><dd>プロシードアリーナHIKONE（滋賀県彦根市）</dd><dt>参加</dt><dd>24チーム（6リーグ×4チーム）</dd><dt>監督会議</dt><dd>8時30分頃より 競技フロア本部前</dd></dl></div>'+
   '<div class="card"><h2>競技について</h2><ul class="rules"><li>JDBA公式ルール及び2026年シニアカテゴリーレギュレーションに則ります。一部ローカルルールを採用（8審制）。</li><li>予選・順位決定トーナメントは5分1セットマッチ。決勝戦は5分3セットマッチ（時間の都合で5分1セットになる場合があります）。</li><li>予選リーグの順位は 勝点（勝ち2・分け1）→ 内野数の合計 の順で決定します。</li><li>規定人数未満でも試合成立とし、勝敗は内野人数で決します。</li><li>全試合セットアップ集合/解散。予選第1試合・トーナメント第1試合・準決勝・決勝はサイド集合、順位決定戦はセンター集合。</li><li>予選第1試合・トーナメント第1試合は試合前に5分間練習（ボールは1チーム2球まで各チームで準備）。</li><li>審判への抗議や過度なアピールは禁止です。</li><li>コートへの入退場は駆け足で速やかに。</li></ul></div>'+
   '<div class="card"><h2>運営・体育館の注意</h2><ul class="rules"><li>開会式でチームプレートを配布します。試合時・閉会式の整列時にご持参ください。</li><li>フラッシュ撮影は厳禁です。</li><li>館内は完全2足制。履き替えたシューズは袋に入れて各チームで管理してください。</li><li>競技フロア内は飲食禁止。</li><li>ゴミは必ず各チームでお持ち帰りください（施設内・周辺のコンビニ等での破棄も禁止）。</li><li>エントランス・ロビーでのミーティング・準備運動は禁止。ミーティングはチーム座席後方の通路で。</li><li>施設の電源は使用しないでください。喫煙は所定の喫煙所で。</li></ul></div>';
 }
@@ -470,11 +566,11 @@ function render0(){
   var view=tab==='sched'?viewSched(C):tab==='league'?viewLeague(C):tab==='tour'?viewTour(C):tab==='info'?viewInfo():tab==='login'?viewLogin():tab==='entry'?viewEntry(C):viewSettings();
   if(loadError)view='<div class="alert">'+esc(loadError)+'</div>'+view;else if(!loaded)view='<p class="note">最新の結果を読み込んでいます…</p>'+view;
   var ae=document.activeElement,keep=ae&&ae.id&&ae.tagName==='INPUT'&&ae.type!=='radio'?{id:ae.id,v:ae.value}:null;
-  document.getElementById('app').innerHTML='<header class="top"><div class="wrap"><div class="brand"><div><h1>頂上決戦2026</h1><div class="sub">2026年11月15日（日）・プロシードアリーナHIKONE</div></div><span class="meta"><span class="live'+(online?' on':'')+'"></span>'+(online?'LIVE 自動更新中':'速報ページ')+'</span></div></div></header>'+
+  document.getElementById('app').innerHTML='<header class="top"><div class="wrap"><svg class="compass" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#C8931E" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="#C8931E" stroke-width=".8" stroke-dasharray="2 3"/><path d="M32 6l3 23-3 3-3-3z M58 32l-23 3-3-3 3-3z M32 58l-3-23 3-3 3 3z M6 32l23-3 3 3-3 3z" fill="#E9D7AC" opacity=".5"/><g class="needle"><path d="M32 10l4 22h-8z" fill="#D23A2E"/><path d="M32 54l-4-22h8z" fill="#F7E9C6"/></g><circle cx="32" cy="32" r="2.5" fill="#C8931E"/><text x="32" y="5.5" font-size="6" text-anchor="middle" fill="#F6D77A">N</text></svg><div class="brand"><div><h1>頂上決戦2026</h1><div class="sub">2026年11月15日（日）・プロシードアリーナHIKONE</div></div><span class="meta"><span class="live'+(online?' on':'')+'"></span>'+(online?'LIVE 航海中':'速報ページ')+'</span></div></div></header>'+
    (admin?'<div class="adminbar"><div class="wrap"><span>管理者ページ</span><button type="button" id="logout">ログアウト</button></div></div>':'')+'<main><div class="wrap">'+view+'</div></main>'+
    (admin||tab==='login'?'':'<footer><div class="wrap"><button type="button" class="linkbtn" data-tab="login">管理者ログイン</button></div></footer>')+
-   '<button type="button" class="refresh" id="refresh" aria-label="最新情報に更新"><span class="ring" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg><span class="t"><span>最新情報に更新</span><small>'+(sheetAt?'記録表 '+sheetAt+' 取得':(lastSync?'最終更新 '+lastSync:'タップで最新の結果へ'))+'</small></span></button>'+'<nav class="bottomnav"><div class="in">'+tabs.map(function(t){return '<button type="button" data-tab="'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICONS[t[0]]+'<span>'+t[1]+'</span></button>'}).join('')+'</div></nav>'+
-   '<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g-champ" x1="0" x2="1"><stop offset="0" stop-color="#FF1FB4"/><stop offset=".5" stop-color="#7A4DFF"/><stop offset="1" stop-color="#00C8F0"/></linearGradient></defs></svg>';
+   '<button type="button" class="refresh" id="refresh" aria-label="最新情報に更新"><span class="ring" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.8"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4M4.6 4.6l2.8 2.8M16.6 16.6l2.8 2.8M4.6 19.4l2.8-2.8M16.6 7.4l2.8-2.8"/></svg><span class="t"><span>最新情報に更新</span><small>'+(sheetAt?'記録表 '+sheetAt+' 取得':(lastSync?'最終更新 '+lastSync:'タップで最新の結果へ'))+'</small></span></button>'+'<nav class="bottomnav"><div class="in">'+tabs.map(function(t){return '<button type="button" data-tab="'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICONS[t[0]]+'<span>'+t[1]+'</span></button>'}).join('')+'</div></nav>'+
+   '<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g-champ" x1="0" x2="1"><stop offset="0" stop-color="#8A5A12"/><stop offset=".5" stop-color="#E2B44A"/><stop offset="1" stop-color="#8A5A12"/></linearGradient></defs></svg>';
   if(keep){var el=document.getElementById(keep.id);if(el){el.value=keep.v;el.focus()}}
   if(tab==='settings'){var q=document.getElementById('qr');if(q&&window.QRCode){q.innerHTML='';new QRCode(q,{text:location.origin+location.pathname,width:200,height:200,colorDark:'#0B0B1F',colorLight:'#fff'})}}
 }
