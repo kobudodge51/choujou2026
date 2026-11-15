@@ -224,6 +224,9 @@ var TOUR=[
 var STAGE={"17A":"21〜22位決定戦","17B":"23〜24位決定戦","18A":"17〜18位決定戦","18B":"19〜20位決定戦","19A":"13〜14位決定戦","19B":"15〜16位決定戦","20A":"9〜10位決定戦","20B":"11〜12位決定戦","21A":"5〜6位決定戦","21B":"7〜8位決定戦","22A":"3位決定戦","23A":"決勝戦","16A":"準決勝","16B":"準決勝"};
 var FINAL=[["23A","w"],["23A","l"],["22A","w"],["22A","l"],["21A","w"],["21A","l"],["21B","w"],["21B","l"],["20A","w"],["20A","l"],["20B","w"],["20B","l"],["19A","w"],["19A","l"],["19B","w"],["19B","l"],["18A","w"],["18A","l"],["18B","w"],["18B","l"],["17A","w"],["17A","l"],["17B","w"],["17B","l"]];
 
+// スプレッドシート（試合進行表）から取り込んだ結果。管理者ページで入力した結果があればそちらを優先
+var BASE={"p1A": {"a": 4, "b": 4, "w": null}, "p1B": {"a": 8, "b": 0, "w": null}, "p2A": {"a": 6, "b": 5, "w": null}, "p2B": {"a": 5, "b": 1, "w": null}, "p3A": {"a": 6, "b": 2, "w": null}, "p3B": {"a": 7, "b": 0, "w": null}, "p4A": {"a": 5, "b": 2, "w": null}, "p4B": {"a": 6, "b": 3, "w": null}, "p5A": {"a": 3, "b": 4, "w": null}, "p5B": {"a": 4, "b": 6, "w": null}, "p6A": {"a": 1, "b": 6, "w": null}, "p6B": {"a": 5, "b": 2, "w": null}, "p7A": {"a": 6, "b": 6, "w": null}, "p7B": {"a": 6, "b": 5, "w": null}, "p8A": {"a": 6, "b": 3, "w": null}, "p8B": {"a": 8, "b": 0, "w": null}, "p9A": {"a": 7, "b": 2, "w": null}, "p9B": {"a": 6, "b": 2, "w": null}, "p10A": {"a": 5, "b": 2, "w": null}, "p10B": {"a": 5, "b": 1, "w": null}, "p11A": {"a": 3, "b": 6, "w": null}, "p11B": {"a": 2, "b": 6, "w": null}, "p12A": {"a": 5, "b": 3, "w": null}, "p12B": {"a": 5, "b": 4, "w": null}, "p13A": {"a": 6, "b": 0, "w": null}, "p13B": {"a": 6, "b": 2, "w": null}, "p14A": {"a": 6, "b": 6, "w": null}, "p14B": {"a": 6, "b": 3, "w": null}, "p15A": {"a": 7, "b": 1, "w": null}, "p15B": {"a": 4, "b": 3, "w": null}, "p16A": {"a": 3, "b": 3, "w": null}, "p16B": {"a": 4, "b": 4, "w": null}, "p17A": {"a": 4, "b": 5, "w": null}, "p17B": {"a": 3, "b": 5, "w": null}, "p18A": {"a": 4, "b": 4, "w": null}};
+var BASE_AT="11/15 11:35";
 var state={scores:{},adj:{}}, sb=null, cred=null, loaded=false, online=false, loadError="";
 function ss(k,v){try{if(v===undefined)return sessionStorage.getItem(k);if(v===null)sessionStorage.removeItem(k);else sessionStorage.setItem(k,v);}catch(e){return null}}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch(e){return null}}
@@ -231,7 +234,7 @@ try{cred=JSON.parse(ls('cj26-cred')||'null')}catch(e){cred=null}
 var tab=ss('cj-tab')||'sched', filter=ls('cj-filter')||'', cursor=+(ss('cj-cursor')||0);
 function isAdmin(){return !!cred}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function sc(k){var v=state.scores[k];return v&&typeof v.a==='number'&&typeof v.b==='number'?v:null}
+function sc(k){var v=state.scores[k]||BASE[k];return v&&typeof v.a==='number'&&typeof v.b==='number'?v:null}
 function nm(n){return esc(n)}
 
 /* ---------- 計算 ---------- */
@@ -316,7 +319,7 @@ function viewSched(C){
   return h;
 }
 function viewLeague(C){
-  var h='<div style="display:grid;gap:6px"><h2>予選リーグ</h2><p class="note">'+C.played+' / 36 試合終了。勝ち2点・引き分け1点・負け0点。順位は「勝点 → 内野数の合計」で決まり、同じ場合は本部が判断します。</p></div>';
+  var h='<div style="display:grid;gap:6px"><h2>予選リーグ</h2><p class="note">'+C.played+' / 36 試合終了（本部の記録表 '+BASE_AT+' 時点の結果を反映）。勝ち2点・引き分け1点・負け0点。順位は「勝点 → 内野数の合計」で決まり、同じ場合は本部が判断します。</p></div>';
   LK.forEach(function(l){
     var arr=C.lg[l];
     h+='<div class="card"><h3 class="lg">'+l+'リーグ'+(C.leagueDone[l]?'<span class="done">確定</span>':'')+'</h3><div class="tbl-wrap"><table class="tbl-fit"><colgroup><col style="width:10%"><col style="width:36%"><col style="width:8%"><col style="width:8%"><col style="width:8%"><col style="width:10%"><col style="width:10%"><col style="width:10%"></colgroup><thead><tr><th>順位</th><th class="name">チーム</th><th>勝</th><th>負</th><th>分</th><th>勝点</th><th>内野</th><th>相手<br>内野</th></tr></thead><tbody>'+
