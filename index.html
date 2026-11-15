@@ -253,7 +253,8 @@ var lastSync='';
 var tab=ss('cj-tab')||'sched', filter=ls('cj-filter')||'', cursor=+(ss('cj-cursor')||0);
 function isAdmin(){return !!cred}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function sc(k){var v=state.scores[k]||BASE[k];return v&&typeof v.a==='number'&&typeof v.b==='number'?v:null}
+var SHEET={}, sheetAt='';
+function sc(k){var v=state.scores[k]||SHEET[k]||BASE[k];return v&&typeof v.a==='number'&&typeof v.b==='number'?v:null}
 function nm(n){return esc(n)}
 
 /* ---------- 計算 ---------- */
@@ -338,7 +339,7 @@ function viewSched(C){
   return h;
 }
 function viewLeague(C){
-  var h='<div style="display:grid;gap:6px"><h2>予選リーグ</h2><p class="note">'+C.played+' / 36 試合終了（本部の記録表 '+BASE_AT+' 時点の結果を反映）。勝ち2点・引き分け1点・負け0点。順位は「勝点 → 内野数の合計」で決まり、同じ場合は本部が判断します。</p></div>';
+  var h='<div style="display:grid;gap:6px"><h2>予選リーグ</h2><p class="note">'+C.played+' / 36 試合終了（本部の記録表'+(sheetAt?' '+sheetAt+' 取得':' '+BASE_AT+' 時点')+'）。勝ち2点・引き分け1点・負け0点。順位は「勝点 → 内野数の合計」で決まり、同じ場合は本部が判断します。</p></div>';
   LK.forEach(function(l){
     var arr=C.lg[l];
     h+='<div class="card"><h3 class="lg">'+l+'リーグ'+(C.leagueDone[l]?'<span class="done">確定</span>':'')+'</h3><div class="tbl-wrap"><table class="tbl-fit"><colgroup><col style="width:10%"><col style="width:36%"><col style="width:8%"><col style="width:8%"><col style="width:8%"><col style="width:10%"><col style="width:10%"><col style="width:10%"></colgroup><thead><tr><th>順位</th><th class="name">チーム</th><th>勝</th><th>負</th><th>分</th><th>勝点</th><th>内野</th><th>相手<br>内野</th></tr></thead><tbody>'+
@@ -471,13 +472,45 @@ function render(){
   document.getElementById('app').innerHTML='<header class="top"><div class="wrap"><div class="brand"><div><h1>頂上決戦2026</h1><div class="sub">2026年11月15日（日）・プロシードアリーナHIKONE</div></div><span class="meta"><span class="live'+(online?' on':'')+'"></span>'+(online?'LIVE 自動更新中':'速報ページ')+'</span></div></div></header>'+
    (admin?'<div class="adminbar"><div class="wrap"><span>管理者ページ</span><button type="button" id="logout">ログアウト</button></div></div>':'')+'<main><div class="wrap">'+view+'</div></main>'+
    (admin||tab==='login'?'':'<footer><div class="wrap"><button type="button" class="linkbtn" data-tab="login">管理者ログイン</button></div></footer>')+
-   '<button type="button" class="refresh" id="refresh" aria-label="最新情報に更新"><span class="ring" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg><span class="t"><span>最新情報に更新</span><small>'+(lastSync?'最終更新 '+lastSync:'タップで最新の結果へ')+'</small></span></button>'+'<nav class="bottomnav"><div class="in">'+tabs.map(function(t){return '<button type="button" data-tab="'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICONS[t[0]]+'<span>'+t[1]+'</span></button>'}).join('')+'</div></nav>'+
+   '<button type="button" class="refresh" id="refresh" aria-label="最新情報に更新"><span class="ring" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg><span class="t"><span>最新情報に更新</span><small>'+(sheetAt?'記録表 '+sheetAt+' 取得':(lastSync?'最終更新 '+lastSync:'タップで最新の結果へ'))+'</small></span></button>'+'<nav class="bottomnav"><div class="in">'+tabs.map(function(t){return '<button type="button" data-tab="'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICONS[t[0]]+'<span>'+t[1]+'</span></button>'}).join('')+'</div></nav>'+
    '<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g-champ" x1="0" x2="1"><stop offset="0" stop-color="#FF1FB4"/><stop offset=".5" stop-color="#7A4DFF"/><stop offset="1" stop-color="#00C8F0"/></linearGradient></defs></svg>';
   if(keep){var el=document.getElementById(keep.id);if(el){el.value=keep.v;el.focus()}}
   if(tab==='settings'){var q=document.getElementById('qr');if(q&&window.QRCode){q.innerHTML='';new QRCode(q,{text:location.origin+location.pathname,width:200,height:200,colorDark:'#0B0B1F',colorLight:'#fff'})}}
 }
 function toast(m){var t=document.createElement('div');t.className='toast';t.setAttribute('role','status');t.textContent=m;document.body.appendChild(t);setTimeout(function(){t.remove()},2800)}
 
+
+/* ---------- 本部スプレッドシートから直接読み込む ---------- */
+var SHEET_ID='1VnOSPS5PYyzPObvD99CnK5KDNtkzsmBYwVeI2hUiKlQ';
+var sheetSeq=0;
+function loadSheet(){
+  return new Promise(function(resolve){
+    var cb='__cjSheet'+(++sheetSeq), done=false, el=document.createElement('script');
+    function fin(ok){if(done)return;done=true;try{delete window[cb]}catch(e){window[cb]=undefined}el.remove();resolve(ok)}
+    window[cb]=function(res){
+      try{
+        var rows=(res&&res.table&&res.table.rows)||[], out={};
+        var num=function(c){if(!c||c.v===null||c.v===undefined||c.v==='')return null;var n=Number(c.v);return isNaN(n)?null:n};
+        rows.forEach(function(r,i){
+          var row=5+i, c=r.c||[], key=null;
+          if(row>=5&&row<=22) key='p'+(row-4);
+          else if(row>=24&&row<=46) key='t'+(row-23);
+          if(!key) return;
+          var a1=num(c[4]),b1=num(c[6]),a2=num(c[10]),b2=num(c[12]);
+          if(a1!==null&&b1!==null) out[key+'A']={a:a1,b:b1,w:null};
+          if(a2!==null&&b2!==null) out[key+'B']={a:a2,b:b2,w:null};
+        });
+        // 同点で勝者がスプレッドシートにない試合は、これまでの勝者（管理者入力・取り込み済み）を引き継ぐ
+        Object.keys(out).forEach(function(k){var o=out[k];if(o.a===o.b){var prev=BASE[k]||SHEET[k];if(prev&&prev.a===o.a&&prev.b===o.b)o.w=prev.w}});
+        SHEET=out; var d=new Date(); sheetAt=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'); fin(true);
+      }catch(e){console.error(e);fin(false)}
+    };
+    el.src='https://docs.google.com/spreadsheets/d/'+SHEET_ID+'/gviz/tq?tqx=responseHandler:'+cb+'&headers=0&range=A5:N46&sheet='+encodeURIComponent('試合進行表')+'&_='+Date.now();
+    el.onerror=function(){fin(false)};
+    setTimeout(function(){fin(false)},12000);
+    document.head.appendChild(el);
+  });
+}
 /* ---------- Supabase ---------- */
 function rpc(fn,a){var o={p_id:cred&&cred.id,p_pw:cred&&cred.pw};for(var k in a)o[k]=a[k];return sb.rpc(fn,o)}
 function loadAll(){if(!sb)return Promise.resolve();
@@ -508,16 +541,11 @@ document.addEventListener('click',function(e){
   var rb=e.target.closest('#refresh');if(rb){
     if(rb.classList.contains('busy'))return;rb.classList.add('busy');rb.querySelector('.t span').textContent='更新中…';
     try{navigator.vibrate&&navigator.vibrate(15)}catch(x){}
-    ss('cj-scroll',String(window.scrollY));
-    Promise.all([loadAll(),new Promise(function(r){setTimeout(r,600)})]).then(function(){
-      // ページ本体（本部の記録表から取り込んだ結果）も最新にする
-      var u=location.pathname+'?r='+Date.now();
-      fetch(u,{cache:'no-store'}).then(function(res){return res.text()}).then(function(t){
-        var m=/var BASE_AT="([^"]*)"/.exec(t);
-        if(m&&m[1]!==BASE_AT){ss('cj-refreshed','1');location.replace(u);return}
-        var b=document.getElementById('refresh');if(b){b.classList.remove('busy');b.classList.add('done');b.querySelector('.t span').textContent='最新です';setTimeout(render,1400)}
-        toast('最新の結果を表示しています');
-      }).catch(function(){render();toast('最新の結果を表示しています')});
+    Promise.all([loadSheet(),loadAll(),new Promise(function(r){setTimeout(r,700)})]).then(function(res){
+      render();
+      var b=document.getElementById('refresh');
+      if(res[0]){if(b){b.classList.add('done');b.querySelector('.t span').textContent='更新しました'}toast('本部の記録表の最新結果を表示しています（'+sheetAt+'）');setTimeout(render,1600)}
+      else{toast('記録表を読み込めませんでした。電波を確認してもう一度押してください')}
     });
     return}
   var id=e.target.id;
@@ -537,7 +565,7 @@ document.addEventListener('click',function(e){
 render();
 if(ss('cj-refreshed')){ss('cj-refreshed',null);var sy=+(ss('cj-scroll')||0);setTimeout(function(){window.scrollTo(0,sy);toast('最新の結果に更新しました')},300)}
 if(!CFG.SUPABASE_URL||!window.supabase){loadError='接続の準備ができていません。';render()}
-else{sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:false}});loadAll();subscribe();
+else{sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:false}});loadAll();subscribe();loadSheet().then(function(ok){if(ok)render()});setInterval(function(){if(!document.hidden)loadSheet().then(function(ok){if(ok)render()})},60000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)loadAll()});setInterval(function(){if(!document.hidden)loadAll()},30000)}
 })();
 </script>
