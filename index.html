@@ -199,6 +199,23 @@ h3.lg .done{font-size:10px;background:var(--ok-soft);color:var(--ok);border-radi
 .adj{display:flex;gap:4px;margin-top:3px}.mini{font-size:10.5px;padding:3px 7px;border:1px solid var(--violet);color:var(--violet);background:#fff;border-radius:999px;cursor:pointer}
 .vpick{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;font-weight:700}
 .courts>.match{min-width:0}
+.refresh{position:fixed;right:max(14px,env(safe-area-inset-right,0px));bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:9;display:flex;align-items:center;gap:10px;border:0;cursor:pointer;color:#fff;font-weight:700;font-size:14px;letter-spacing:.06em;padding:12px 18px 12px 14px;border-radius:999px;
+  background:linear-gradient(110deg,#FF1FB4,#7A4DFF 35%,#00C8F0 65%,#FF1FB4);background-size:300% 100%;animation:flow 5s linear infinite;
+  box-shadow:0 10px 28px rgba(122,77,255,.45),0 0 0 3px rgba(255,255,255,.9);overflow:hidden;-webkit-tap-highlight-color:transparent;transition:transform .15s ease}
+.refresh::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:shine 3.2s ease-in-out infinite}
+.refresh:active{transform:scale(.94)}
+.refresh:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.refresh svg{width:20px;height:20px;flex:none;filter:drop-shadow(0 0 4px rgba(255,255,255,.8))}
+.refresh .t{display:grid;line-height:1.15;text-align:left}
+.refresh small{font-size:9.5px;font-weight:700;letter-spacing:.04em;opacity:.9}
+.refresh.busy svg{animation:spin .8s linear infinite}
+.refresh.done{background:linear-gradient(110deg,#00A86B,#00C8F0);animation:none}
+.refresh .ring{position:absolute;inset:-6px;border-radius:999px;border:2px solid rgba(255,31,180,.6);animation:ring 2.4s ease-out infinite;pointer-events:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes shine{0%,60%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+@keyframes ring{0%{opacity:.8;transform:scale(.92)}100%{opacity:0;transform:scale(1.18)}}
+@media (prefers-reduced-motion:reduce){.refresh,.refresh::after,.refresh .ring{animation:none}}
+
 .bk .wn{font-weight:700;fill:var(--ink)}.bk .ls{fill:#9AA0B8}.bk .sct2{font-weight:700;fill:var(--pink)}.champline{font-size:13px}.champline b{font-size:16px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 </style>
 </head>
@@ -232,6 +249,7 @@ var state={scores:{},adj:{}}, sb=null, cred=null, loaded=false, online=false, lo
 function ss(k,v){try{if(v===undefined)return sessionStorage.getItem(k);if(v===null)sessionStorage.removeItem(k);else sessionStorage.setItem(k,v);}catch(e){return null}}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch(e){return null}}
 try{cred=JSON.parse(ls('cj26-cred')||'null')}catch(e){cred=null}
+var lastSync='';
 var tab=ss('cj-tab')||'sched', filter=ls('cj-filter')||'', cursor=+(ss('cj-cursor')||0);
 function isAdmin(){return !!cred}
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
@@ -453,7 +471,7 @@ function render(){
   document.getElementById('app').innerHTML='<header class="top"><div class="wrap"><div class="brand"><div><h1>頂上決戦2026</h1><div class="sub">2026年11月15日（日）・プロシードアリーナHIKONE</div></div><span class="meta"><span class="live'+(online?' on':'')+'"></span>'+(online?'LIVE 自動更新中':'速報ページ')+'</span></div></div></header>'+
    (admin?'<div class="adminbar"><div class="wrap"><span>管理者ページ</span><button type="button" id="logout">ログアウト</button></div></div>':'')+'<main><div class="wrap">'+view+'</div></main>'+
    (admin||tab==='login'?'':'<footer><div class="wrap"><button type="button" class="linkbtn" data-tab="login">管理者ログイン</button></div></footer>')+
-   '<nav class="bottomnav"><div class="in">'+tabs.map(function(t){return '<button type="button" data-tab="'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICONS[t[0]]+'<span>'+t[1]+'</span></button>'}).join('')+'</div></nav>'+
+   '<button type="button" class="refresh" id="refresh" aria-label="最新情報に更新"><span class="ring" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg><span class="t"><span>最新情報に更新</span><small>'+(lastSync?'最終更新 '+lastSync:'タップで最新の結果へ')+'</small></span></button>'+'<nav class="bottomnav"><div class="in">'+tabs.map(function(t){return '<button type="button" data-tab="'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICONS[t[0]]+'<span>'+t[1]+'</span></button>'}).join('')+'</div></nav>'+
    '<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g-champ" x1="0" x2="1"><stop offset="0" stop-color="#FF1FB4"/><stop offset=".5" stop-color="#7A4DFF"/><stop offset="1" stop-color="#00C8F0"/></linearGradient></defs></svg>';
   if(keep){var el=document.getElementById(keep.id);if(el){el.value=keep.v;el.focus()}}
   if(tab==='settings'){var q=document.getElementById('qr');if(q&&window.QRCode){q.innerHTML='';new QRCode(q,{text:location.origin+location.pathname,width:200,height:200,colorDark:'#0B0B1F',colorLight:'#fff'})}}
@@ -465,7 +483,7 @@ function rpc(fn,a){var o={p_id:cred&&cred.id,p_pw:cred&&cred.pw};for(var k in a)
 function loadAll(){if(!sb)return Promise.resolve();
   return Promise.all([sb.from('cj26_results').select('key,a,b,w'),sb.from('cj26_settings').select('adj').eq('id',1).maybeSingle()]).then(function(r){
     if(r[0].error)throw r[0].error;var s={};(r[0].data||[]).forEach(function(x){s[x.key]={a:x.a,b:x.b,w:x.w}});state.scores=s;
-    if(r[1].data&&r[1].data.adj)state.adj=r[1].data.adj;loaded=true;loadError='';render();
+    if(r[1].data&&r[1].data.adj)state.adj=r[1].data.adj;loaded=true;var d=new Date();lastSync=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');loadError='';render();
   }).catch(function(e){console.error(e);loadError='結果を読み込めませんでした。電波の良い場所で開き直してください。';render()})}
 var tmr=null;function later(){clearTimeout(tmr);tmr=setTimeout(loadAll,250)}
 function subscribe(){sb.channel('cj26-live').on('postgres_changes',{event:'*',schema:'public',table:'cj26_results'},later).on('postgres_changes',{event:'*',schema:'public',table:'cj26_settings'},later).subscribe(function(s){online=s==='SUBSCRIBED';render()})}
@@ -487,6 +505,21 @@ document.addEventListener('click',function(e){
   var st=e.target.closest('[data-step]');if(st){var inp=document.getElementById('score-'+st.dataset.step);inp.value=Math.max(0,Math.min(20,(parseInt(inp.value,10)||0)+(+st.dataset.d)));inp.dispatchEvent(new Event('input',{bubbles:true}));return}
   var ad=e.target.closest('[data-adj]');if(ad){var adj=JSON.parse(JSON.stringify(state.adj||{}));var n=ad.dataset.adj;if(+ad.dataset.d)adj[n]=(+adj[n]||0)+0.1;else delete adj[n];
     once(rpc('cj26_save_adj',{p_adj:adj}).then(function(r){if(r.error)throw r.error;state.adj=adj;render();toast('順位を調整しました')}).catch(werr));return}
+  var rb=e.target.closest('#refresh');if(rb){
+    if(rb.classList.contains('busy'))return;rb.classList.add('busy');rb.querySelector('.t span').textContent='更新中…';
+    try{navigator.vibrate&&navigator.vibrate(15)}catch(x){}
+    ss('cj-scroll',String(window.scrollY));
+    Promise.all([loadAll(),new Promise(function(r){setTimeout(r,600)})]).then(function(){
+      // ページ本体（本部の記録表から取り込んだ結果）も最新にする
+      var u=location.pathname+'?r='+Date.now();
+      fetch(u,{cache:'no-store'}).then(function(res){return res.text()}).then(function(t){
+        var m=/var BASE_AT="([^"]*)"/.exec(t);
+        if(m&&m[1]!==BASE_AT){ss('cj-refreshed','1');location.replace(u);return}
+        var b=document.getElementById('refresh');if(b){b.classList.remove('busy');b.classList.add('done');b.querySelector('.t span').textContent='最新です';setTimeout(render,1400)}
+        toast('最新の結果を表示しています');
+      }).catch(function(){render();toast('最新の結果を表示しています')});
+    });
+    return}
   var id=e.target.id;
   if(id==='prev'||id==='next'){cursor+=id==='prev'?-1:1;ss('cj-cursor',String(cursor));render();return}
   if(id==='save-score'||id==='clear-score'){
@@ -502,6 +535,7 @@ document.addEventListener('click',function(e){
   if(id==='logout'){cred=null;ls('cj26-cred',null);tab='sched';ss('cj-tab',tab);render();toast('ログアウトしました')}
 });
 render();
+if(ss('cj-refreshed')){ss('cj-refreshed',null);var sy=+(ss('cj-scroll')||0);setTimeout(function(){window.scrollTo(0,sy);toast('最新の結果に更新しました')},300)}
 if(!CFG.SUPABASE_URL||!window.supabase){loadError='接続の準備ができていません。';render()}
 else{sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:false}});loadAll();subscribe();
   document.addEventListener('visibilitychange',function(){if(!document.hidden)loadAll()});setInterval(function(){if(!document.hidden)loadAll()},30000)}
