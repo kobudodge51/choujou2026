@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>頂上決戦2026 速報</title>
 <meta name="description" content="頂上決戦2026（2026年11月15日・プロシードアリーナHIKONE）の試合進行・予選リーグ・順位決定トーナメント速報">
-<meta name="theme-color" content="#4FC0EC">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap">
+<meta name="theme-color" content="#2A1C10">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Antique&family=IM+Fell+English+SC&display=swap">
 <script>
 window.CJ_CONFIG = {
   SUPABASE_URL: "https://reyffxawdgpqffdygucb.supabase.co",
@@ -219,79 +219,116 @@ h3.lg .done{font-size:10px;background:var(--ok-soft);color:var(--ok);border-radi
 
 .bk .wn{font-weight:700;fill:var(--ink)}.bk .ls{fill:#9AA0B8}.bk .sct2{font-weight:700;fill:var(--pink)}.champline{font-size:13px}.champline b{font-size:16px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* ===== パターンB：晴れの大海原（青空・帆布・太陽・南の海） ===== */
+/* ===== 大航海テーマ（古地図・羊皮紙・封蝋・古い帆船の甲板） ===== */
 :root{
-  --bg:#EAF7FB;--surface:#FFFFFF;--ink:#0D2B45;--muted:#4F6B80;--line:#CFE6EF;--grid:rgba(20,120,170,.06);
-  --pink:#FF5A36;--violet:#0F6FA8;--cyan:#16B5C9;--sun:#FFB627;
-  --court-a:#0F7FBF;--court-b:#FF5A36;--court-a-soft:rgba(22,181,201,.10);
-  --win:#0A8F5A;--warn:#E0362B;--ok:#0A8F5A;--ok-soft:#DDF5EA;
-  --path-win:#E8342A;--path-lose:#35B6E8;--path-none:#C9DCE5;
-  --grad:linear-gradient(90deg,#FFB627,#FF5A36);
-  --head:"Dela Gothic One","Hiragino Sans",sans-serif;
+  --bg:#2A1C10;--surface:#E9D7AE;--ink:#2A1A0C;--muted:#6B5233;--line:#B89A68;--grid:rgba(60,35,10,.08);
+  --pink:#8E1B12;--violet:#3A2A16;--cyan:#3F5E5A;--sun:#9C6B1C;
+  --gold1:#E8C77A;--gold2:#A9782A;--gold3:#5E3E12;--navy:#1E140A;--sea:#2F4B4A;--rope:#8A6A3E;
+  --court-a:#2F4B4A;--court-b:#8E1B12;--court-a-soft:rgba(63,94,90,.12);
+  --win:#3E5A2A;--warn:#8E1B12;--ok:#3E5A2A;--ok-soft:#DCD3A8;
+  --path-win:#9E1E14;--path-lose:#3F6E78;--path-none:#B8A07A;
+  --grad:linear-gradient(90deg,#5E3E12,#E8C77A 50%,#A9782A);
+  --head:"Zen Antique","Hiragino Mincho ProN","Yu Mincho",serif;
+  --num:"IM Fell English SC","Zen Antique",serif;
+  --paper:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='4' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .26 0 0 0 0 .09 0 0 0 1.1 -.45'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E"),radial-gradient(130% 100% at 50% 40%,#F1E2BC 0%,#E6D09F 55%,#CFAF74 88%,#A9814A 100%);
 }
-body{background:
-  linear-gradient(180deg,#D8F1FA 0,#F4FBFD 320px,#F4FBFD 100%)}
-body::before{background:#5EC8EE}
-header.top{background:linear-gradient(180deg,#4FC0EC 0%,#8AD8F4 70%,#BDEBFA 100%);color:#0D2B45;backdrop-filter:none;-webkit-backdrop-filter:none;overflow-x:clip;overflow-y:visible}
-body{overflow-x:hidden}
-header.top::before{content:"";position:absolute;right:-30px;top:-40px;width:150px;height:150px;border-radius:50%;
-  background:radial-gradient(circle,#FFF4B8 0 30%,#FFD54A 31% 48%,rgba(255,213,74,.35) 49% 62%,transparent 63%);pointer-events:none}
-header.top::after{height:26px;bottom:-24px;animation:none;background:
-  radial-gradient(20px 14px at 20px 0,#BDEBFA 96%,transparent 100%) 0 0/40px 14px repeat-x,
-  radial-gradient(20px 12px at 0 0,#16B5C9 96%,transparent 100%) 0 10px/40px 14px repeat-x}
-@media (prefers-reduced-motion:no-preference){header.top::after{animation:waves 8s linear infinite}}
-@keyframes waves{to{background-position:40px 0,-40px 10px}}
-.compass{display:none}
-.top .wrap{padding-block:14px 8px;position:relative}
-.brand{padding-right:0}
-.brand h1{font-family:var(--head);font-style:normal;font-weight:400;font-size:34px;letter-spacing:.02em;
-  color:#FFFFFF;-webkit-text-fill-color:#FFFFFF;background:none;animation:none;
-  -webkit-text-stroke:2px #0D2B45;paint-order:stroke fill;text-shadow:3px 4px 0 #0D2B45}
-.brand .sub{color:#0D2B45;font-weight:700;font-size:11.5px}
-.meta{color:#0D2B45;font-weight:700}
-.live.on{background:#0A8F5A;box-shadow:0 0 0 3px rgba(255,255,255,.7)}
-main .wrap{padding-top:34px}
-h2{font-family:var(--head);font-weight:400;letter-spacing:.02em;color:#0D2B45}
-h2::before{width:20px;height:20px;border-radius:50%;background:radial-gradient(circle,#fff 0 28%,#FF5A36 29% 100%);box-shadow:0 2px 0 #0D2B45}
-h3.lg{font-family:var(--head);font-weight:400;color:#0D2B45}
-.match,.card{background:#FFFFFF;border:2.5px solid #0D2B45;box-shadow:4px 5px 0 #0D2B45}
-.card{border-radius:18px}.match{border-radius:14px}
-.match.empty{background:rgba(255,255,255,.5);border:2px dashed #9CC3D6;box-shadow:none}
-.courthead span{font-family:var(--head);font-weight:400;letter-spacing:.1em;border:2px solid #0D2B45;box-shadow:3px 3px 0 #0D2B45;border-radius:999px}
-.courthead .a{background:#0F7FBF}.courthead .b{background:#FF5A36}
-.court.a i{background:#0F7FBF}.court.b i{background:#FF5A36}
-.court i{border:1.5px solid #0D2B45}
-.time{font-family:var(--head);font-style:normal;font-weight:400;background:none;color:#0F6FA8;-webkit-text-fill-color:#0F6FA8}
-.sc{font-family:var(--head);font-style:normal;font-weight:400;color:#A8C3D2}
-.row.w .sc{color:#FF5A36}
-.row.w .tn::after{content:"WIN";font-style:normal;background:#FFB627;color:#0D2B45;border:1.5px solid #0D2B45;border-radius:6px;font-size:9px;padding:0 4px;letter-spacing:.05em}
-.pill{background:#FF5A36;border:1.5px solid #0D2B45;box-shadow:2px 2px 0 #0D2B45}
-.break{background:#FFB627;color:#0D2B45;font-family:var(--head);font-weight:400;border:2.5px solid #0D2B45;box-shadow:4px 4px 0 #0D2B45}
-.break .time{color:#0D2B45;-webkit-text-fill-color:#0D2B45}
-.tbl-wrap{border:2px solid #0D2B45;background:#fff}
-th{background:#DFF4FA;color:#0F6FA8}
-.rk{font-family:var(--head);font-style:normal;font-weight:400}.rk1{color:#FF5A36}
-.adv td{background:rgba(22,181,201,.10)}
-.mx thead th,.mx td.name .no{color:#0F6FA8}
-.champline b{font-family:var(--head);font-weight:400;font-size:22px;color:#FF5A36;-webkit-text-fill-color:#FF5A36;background:none}
-.bk .box{fill:#fff;stroke:#0D2B45}.bk .scbg{fill:#0D2B45}.bk .sct2{fill:#FF5A36}.bk .ls{fill:#9DB4C2}
-.vp{background:#0F6FA8}
-.btn{border:2px solid #0D2B45;box-shadow:3px 3px 0 #0D2B45}
-.btn.primary{background:#FF5A36;color:#fff;border-color:#0D2B45;box-shadow:3px 3px 0 #0D2B45}
-.progress b{background:linear-gradient(90deg,#16B5C9,#0F6FA8)}
-.adminbar{background:#0D2B45}
-.adminbar::before{background:#FFB627}
-.toast{background:#0D2B45;color:#fff;border:2px solid #FFB627}
-.bottomnav{background:#FFFFFF;border-top:2.5px solid #0D2B45}
-.bottomnav::before{display:none}
-.bottomnav button{color:#4F6B80}
-.bottomnav button[aria-current="page"]{color:#FF5A36}
-.bottomnav button[aria-current="page"] svg{filter:none;transform:translateY(-2px)}
-.refresh{background:#FFB627;background-size:auto;animation:none;color:#0D2B45;border:2.5px solid #0D2B45;box-shadow:4px 4px 0 #0D2B45}
-.refresh::after{background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%)}
-.refresh .ring{border-color:rgba(255,90,54,.6)}
-.refresh.done{background:#0A8F5A;color:#fff}
-.rank-list li:nth-child(1) .rk{color:#E0A100;font-size:24px}.rank-list li:nth-child(2) .rk{color:#7D8A96;font-size:21px}.rank-list li:nth-child(3) .rk{color:#C0612B;font-size:20px}
+html{background:#1E140A}
+body{color:var(--ink);background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+  radial-gradient(120% 80% at 50% 0%,rgba(255,220,150,.10),transparent 60%),
+  repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 2px,transparent 2px 86px),
+  linear-gradient(90deg,#3B2716,#2E1E10 30%,#3A2614 60%,#2A1A0D),
+  #2A1C10}
+body::before{background:#1E140A}
+/* 見出し：破れた古地図 */
+header.top{background:var(--paper);color:var(--ink);backdrop-filter:none;-webkit-backdrop-filter:none;
+  box-shadow:inset 0 0 40px rgba(94,62,18,.55),0 8px 20px rgba(0,0,0,.55);overflow-x:clip}
+header.top::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background:
+  linear-gradient(rgba(94,62,18,.35) 1px,transparent 1px) 0 0/100% 34px,
+  linear-gradient(90deg,rgba(94,62,18,.35) 1px,transparent 1px) 0 0/34px 100%}
+header.top::after{height:12px;bottom:-10px;animation:none;background:
+  conic-gradient(from 135deg at 50% 0,#C9A86E 90deg,transparent 0) 0 0/13px 12px repeat-x;
+  filter:drop-shadow(0 3px 2px rgba(0,0,0,.45))}
+.top .wrap{position:relative;padding-block:14px 8px}
+.compass{position:absolute;right:max(8px,env(safe-area-inset-right,0px));top:6px;width:76px;height:76px;opacity:.75;mix-blend-mode:multiply}
+.compass *{stroke:#5E3E12!important}
+.compass [fill]:not([fill="none"]){fill:#7A1A10!important}
+@media (prefers-reduced-motion:no-preference){.compass .needle{transform-origin:32px 32px;animation:sway 7s ease-in-out infinite}}
+@keyframes sway{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(12deg)}}
+.brand{padding-right:76px}
+.brand h1{font-family:var(--head);font-style:normal;font-weight:400;font-size:32px;letter-spacing:.06em;
+  color:#3A220C;-webkit-text-fill-color:#3A220C;background:none;animation:none;filter:none;
+  text-shadow:0 1px 0 rgba(255,240,200,.6),0 0 1px rgba(58,34,12,.6)}
+.brand .sub{color:#5E4424;font-size:11.5px;letter-spacing:.06em;font-weight:700}
+.meta{color:#5E4424;font-weight:700}
+.live.on{background:#8E1B12;box-shadow:0 0 0 3px rgba(142,27,18,.25)}
+main .wrap{padding-top:26px}
+/* 見出し（h2）：木の板に焼き印 */
+h2{font-family:var(--head);font-weight:400;letter-spacing:.08em;color:#F0DDAF;text-shadow:0 2px 0 rgba(0,0,0,.6)}
+h2::before{width:18px;height:18px;border-radius:0;background:none;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z'/%3E%3C/svg%3E") center/contain no-repeat;
+  background-color:#C9A15A}
+main .wrap>p,.note,.legend,.lead{color:#CDB88E}
+h3.lg{font-family:var(--head);font-weight:400;letter-spacing:.06em;color:#F0DDAF}
+.slot-h .lbl,.slot-h{color:#CDB88E}
+/* カード：焼けた羊皮紙 */
+.match,.card{background:var(--paper);border:1px solid #6E4E22;
+  box-shadow:inset 0 0 22px rgba(94,62,18,.55),inset 0 0 3px rgba(60,35,10,.6),0 6px 14px rgba(0,0,0,.5)}
+.card{border-radius:4px 10px 6px 12px}.match{border-radius:10px 4px 12px 6px}
+.match.empty{background:rgba(233,215,174,.12);border:1px dashed #8A6A3E;box-shadow:none}
+.match.empty *{color:#BFA77A}
+.card h3.lg,.card h3,.card h2{color:var(--ink);text-shadow:none}
+.card p,.card .note,.card .legend{color:var(--muted)}
+.courthead span{font-family:var(--head);font-weight:400;letter-spacing:.2em;border:1px solid #1E140A;box-shadow:0 3px 0 rgba(0,0,0,.4);border-radius:3px}
+.courthead .a{background:linear-gradient(180deg,#3F5E5A,#22363A);color:#EFE0B8}.courthead .b{background:linear-gradient(180deg,#9E2A1E,#5E120B);color:#EFE0B8}
+.court.a i{background:var(--court-a)}.court.b i{background:var(--court-b)}
+.time{font-family:var(--num);font-style:normal;font-weight:400;background:none;color:#E8C77A;-webkit-text-fill-color:#E8C77A}
+.match .time,.card .time{color:var(--gold3);-webkit-text-fill-color:var(--gold3)}
+.sc{font-family:var(--num);font-style:normal;font-weight:400;color:#9C8358}
+.row.w .tn{color:var(--ink)}.row.w .sc{color:var(--pink)}
+/* 勝ち：赤い封蝋 */
+.row.w .tn::after{content:"勝";font-family:var(--head);font-style:normal;color:#F4D9B0;width:19px;height:19px;display:inline-grid;place-items:center;padding:0;font-size:10px;letter-spacing:0;vertical-align:1px;
+  border-radius:47% 53% 45% 55%/52% 46% 54% 48%;background:radial-gradient(circle at 35% 30%,#C4392A,#8E1B12 55%,#5C0E08);
+  box-shadow:0 0 0 2px rgba(142,27,18,.35),0 1px 2px rgba(0,0,0,.5)}
+.pill{background:radial-gradient(circle at 35% 30%,#C4392A,#7A140C);box-shadow:0 0 0 2px rgba(240,220,170,.7)}
+.break{background:linear-gradient(180deg,#4A2F17,#2E1C0C);color:#E8C77A;font-family:var(--head);font-weight:400;letter-spacing:.12em;border:1px solid #8A6A3E;box-shadow:inset 0 1px 0 rgba(255,220,150,.15),0 4px 10px rgba(0,0,0,.5)}
+.break .time{color:var(--gold1);-webkit-text-fill-color:var(--gold1)}
+.tbl-wrap{background:var(--paper);border:1px solid #6E4E22;box-shadow:inset 0 0 18px rgba(94,62,18,.45)}
+table,td{color:var(--ink)}
+th{background:rgba(94,62,18,.18);color:#4A2F12}
+td,th{border-color:rgba(110,78,34,.35)}
+.rk{font-family:var(--num);font-style:normal;font-weight:400}.rk1{color:var(--pink)}
+.adv td{background:rgba(63,94,90,.14)}
+.mx thead th,.mx td.name .no{color:var(--sea)}
+h3.lg .done{background:var(--ok-soft);color:var(--ok)}
+.champline b{font-family:var(--head);font-weight:400;font-size:22px;color:#8E1B12;-webkit-text-fill-color:#8E1B12;background:none}
+.bk text{fill:var(--ink)}.bk .box{fill:#F1E2BC;stroke:#6E4E22}.bk .scbg{fill:#3A2414}.bk .sct2{fill:#8E1B12}.bk .ls{fill:#9C8358}
+.vp{background:var(--sea)}
+.sel,input[type=text],input[type=password],input[type=number]{background:#F3E6C4;border-color:#8A6A3E;color:var(--ink)}
+.btn{background:#E9D7AE;border-color:#6E4E22;color:var(--ink)}
+.btn.primary{background:linear-gradient(180deg,#B8873A,#7A5218);color:#F6E6BE;border-color:#3E2A10;box-shadow:inset 0 1px 0 rgba(255,230,170,.35),0 3px 0 #2E1C0C}
+.progress b{background:linear-gradient(90deg,#5E3E12,#C9A15A)}
+.adminbar{background:linear-gradient(90deg,#5C0E08,#8E1B12)}
+.adminbar::before{background:#C9A15A}
+.toast{background:#2A1A0C;color:#F0DDAF;border:1px solid #A9782A;box-shadow:0 8px 24px rgba(0,0,0,.6)}
+/* 下のメニュー：古い甲板の板 */
+.bottomnav{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),repeating-linear-gradient(90deg,#4A2F17 0 74px,#3A2410 74px 76px),#43291A;border-top:0;box-shadow:0 -6px 16px rgba(0,0,0,.5)}
+.bottomnav::before{height:5px;inset:-5px 0 auto;background:repeating-linear-gradient(135deg,#B08A52 0 4px,#6E4E22 4px 7px)}
+.bottomnav button{color:#BFA273}
+.bottomnav button[aria-current="page"]{color:#F0CE7E}
+.bottomnav button[aria-current="page"] svg{filter:drop-shadow(0 0 5px rgba(240,190,90,.55))}
+/* 更新ボタン：くすんだ真鍮 */
+.refresh{background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35 0 0 0 0 .22 0 0 0 0 .08 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),linear-gradient(160deg,#C9A15A,#8E6526 45%,#5E3E12);background-size:auto;animation:none;color:#F6E6BE;
+  text-shadow:0 1px 0 rgba(0,0,0,.5);box-shadow:inset 0 1px 0 rgba(255,230,170,.4),0 0 0 2px #2A1A0C,0 0 0 4px #8A6A3E,0 10px 22px rgba(0,0,0,.6)}
+.refresh svg{filter:none}
+.refresh::after{background:linear-gradient(100deg,transparent 35%,rgba(255,236,190,.35) 50%,transparent 65%)}
+.refresh .ring{border-color:rgba(201,161,90,.6)}
+.refresh.done{background:linear-gradient(160deg,#5E7A3A,#2E4A1A);color:#F6E6BE}
+.linkbtn{color:#CDB88E}
+.rank-list li .tn{color:var(--ink)}
+.rank-list li:nth-child(1) .rk{color:#9C6B1C;font-size:24px}.rank-list li:nth-child(2) .rk{color:#5F5A52;font-size:21px}.rank-list li:nth-child(3) .rk{color:#7A3A18;font-size:20px}
 .rank-list li:nth-child(-n+3) .tn{font-size:16px}
 </style>
 </head>
@@ -550,7 +587,7 @@ function render0(){
    (admin?'<div class="adminbar"><div class="wrap"><span>管理者ページ</span><button type="button" id="logout">ログアウト</button></div></div>':'')+'<main><div class="wrap">'+view+'</div></main>'+
    (admin||tab==='login'?'':'<footer><div class="wrap"><button type="button" class="linkbtn" data-tab="login">管理者ログイン</button></div></footer>')+
    '<button type="button" class="refresh" id="refresh" aria-label="最新情報に更新"><span class="ring" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.8"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4M4.6 4.6l2.8 2.8M16.6 16.6l2.8 2.8M4.6 19.4l2.8-2.8M16.6 7.4l2.8-2.8"/></svg><span class="t"><span>最新情報に更新</span><small>'+(sheetAt?'記録表 '+sheetAt+' 取得':(lastSync?'最終更新 '+lastSync:'タップで最新の結果へ'))+'</small></span></button>'+'<nav class="bottomnav"><div class="in">'+tabs.map(function(t){return '<button type="button" data-tab="'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICONS[t[0]]+'<span>'+t[1]+'</span></button>'}).join('')+'</div></nav>'+
-   '<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g-champ" x1="0" x2="1"><stop offset="0" stop-color="#FF5A36"/><stop offset="1" stop-color="#FFB627"/></linearGradient></defs></svg>';
+   '<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g-champ" x1="0" x2="1"><stop offset="0" stop-color="#8A5A12"/><stop offset=".5" stop-color="#E2B44A"/><stop offset="1" stop-color="#8A5A12"/></linearGradient></defs></svg>';
   if(keep){var el=document.getElementById(keep.id);if(el){el.value=keep.v;el.focus()}}
   if(tab==='settings'){var q=document.getElementById('qr');if(q&&window.QRCode){q.innerHTML='';new QRCode(q,{text:location.origin+location.pathname,width:200,height:200,colorDark:'#0B0B1F',colorLight:'#fff'})}}
 }
