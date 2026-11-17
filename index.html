@@ -5,8 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>頂上決戦2026 速報</title>
 <meta name="description" content="頂上決戦2026（2026年11月15日・プロシードアリーナHIKONE）の試合進行・予選リーグ・順位決定トーナメント速報">
-<meta name="theme-color" content="#0E1C2E">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Antique&display=swap">
+<meta name="theme-color" content="#0B0B0E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap">
+<script>(function(){var t=null;try{t=localStorage.getItem('cj-theme')}catch(e){}if(t!=='dark'&&t!=='light'){t=(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light'}document.documentElement.setAttribute('data-theme',t)})();</script>
 <script>
 window.CJ_CONFIG = {
   SUPABASE_URL: "https://reyffxawdgpqffdygucb.supabase.co",
@@ -219,103 +220,178 @@ h3.lg .done{font-size:10px;background:var(--ok-soft);color:var(--ok);border-radi
 
 .bk .wn{font-weight:700;fill:var(--ink)}.bk .ls{fill:#9AA0B8}.bk .sct2{font-weight:700;fill:var(--pink)}.champline{font-size:13px}.champline b{font-size:16px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 
-/* ===== 大航海テーマ：古い海図の羊皮紙・羅針盤・ロープ・財宝の金 ===== */
+/* ===== 海賊旗テーマ（黒い旗・白い骸骨・原色アクセント／ライト＝帆布・ダーク＝夜の海） ===== */
 :root{
-  --bg:#EFE2C4;--surface:#FBF4E2;--ink:#2B1B10;--muted:#7A6145;--line:#D9C49C;--grid:rgba(120,80,30,.07);
-  --pink:#B3261E;--violet:#1F3B5C;--cyan:#2E7D9A;--sun:#C8931E;
-  --gold1:#F6D77A;--gold2:#C8931E;--gold3:#8A5A12;--navy:#14263D;--sea:#1E4E6E;--rope:#A47C48;
-  --court-a:#1F4F7A;--court-b:#A3271F;--court-a-soft:rgba(46,125,154,.10);
-  --win:#1F6B3A;--warn:#A3271F;--ok:#1F6B3A;--ok-soft:#E3EFD9;
-  --path-win:#C81E1E;--path-lose:#2F9FD6;--path-none:#CDB78C;
-  --grad:linear-gradient(90deg,var(--gold3),var(--gold1) 50%,var(--gold2));
-  --head:"Zen Antique","Hiragino Mincho ProN","Yu Mincho",serif;
+  color-scheme:light;
+  --bg:#F2EEE4;--surface:#FFFFFF;--surface2:#F7F4EC;--ink:#111114;--muted:#5F5A52;--line:#DCD4C3;--grid:rgba(17,17,20,.05);
+  --red:#E5322D;--blue:#1F4FD8;--yellow:#FFC21A;--purple:#7B3FE4;--green:#23A04A;
+  --pink:var(--red);--violet:var(--blue);--cyan:#1FA6E0;--sun:var(--yellow);
+  --court-a:var(--blue);--court-b:var(--red);--court-a-soft:rgba(31,79,216,.08);
+  --win:var(--green);--warn:var(--red);--ok:var(--green);--ok-soft:#E1F3E5;
+  --path-win:#E5322D;--path-lose:#3C7BF0;--path-none:#CFC6B4;
+  --grad:linear-gradient(90deg,var(--red),var(--yellow));
+  --cb:2px solid #111114;--cs:4px 4px 0 #111114;
+  --head:"Dela Gothic One","Hiragino Sans",sans-serif;
+  --hh:118px;
 }
-body{background:
-  radial-gradient(120% 60% at 50% -10%,rgba(255,250,235,.85),transparent 60%),
-  radial-gradient(60% 40% at 0% 100%,rgba(120,80,30,.18),transparent 70%),
-  radial-gradient(60% 40% at 100% 70%,rgba(120,80,30,.14),transparent 70%),
-  repeating-linear-gradient(0deg,rgba(120,80,30,.025) 0 2px,transparent 2px 5px),
-  linear-gradient(var(--grid) 1px,transparent 1px) 0 0/100% 40px,
-  linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/40px 100%,
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0A0A0D;--surface:#16161B;--surface2:#1D1D24;--ink:#F3EFE6;--muted:#A49E94;--line:#2F2E36;--grid:rgba(255,255,255,.035);
+  --court-a-soft:rgba(60,123,240,.14);--ok-soft:rgba(35,160,74,.18);
+  --path-none:#3A3944;--path-lose:#4F8BFF;
+  --cb:1.5px solid #3A3942;--cs:0 0 0 1px rgba(255,255,255,.03),0 10px 24px rgba(0,0,0,.55);
+}
+body{color:var(--ink);background:
+  radial-gradient(70% 40% at 50% 0%,rgba(229,50,45,.07),transparent 70%),
+  linear-gradient(var(--grid) 1px,transparent 1px) 0 0/100% 28px,
+  linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/28px 100%,
   var(--bg)}
-body::before{background:var(--navy)}
-/* 見出し：夜の海に浮かぶ大会名 */
-header.top{background:linear-gradient(180deg,#0E1C2E,#1B3A5A);color:#F7E9C6;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 6px 18px rgba(14,28,46,.35)}
-header.top::after{height:12px;bottom:-11px;background:
-  radial-gradient(14px 10px at 14px 0,#1B3A5A 98%,transparent 100%) 0 0/28px 12px repeat-x;animation:none}
-.top .wrap{position:relative}
-.compass{position:absolute;right:max(10px,env(safe-area-inset-right,0px));top:8px;width:64px;height:64px;opacity:.9}
-@media (prefers-reduced-motion:no-preference){.compass .needle{transform-origin:32px 32px;animation:sway 6s ease-in-out infinite}}
-@keyframes sway{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(14deg)}}
-.brand{padding-right:70px}
-.brand h1{font-family:var(--head);font-style:normal;font-weight:400;font-size:32px;letter-spacing:.08em;
-  background:linear-gradient(180deg,#FFF4C8,#F2C95A 45%,#B97A1C 55%,#F6D77A);-webkit-background-clip:text;background-clip:text;color:transparent;animation:none;
-  filter:drop-shadow(0 2px 0 rgba(0,0,0,.35))}
-.brand .sub{color:#E9D7AC;font-size:11.5px;letter-spacing:.06em}
-.meta{color:#CFE3EE}
-.live.on{background:#6FD39A}
-/* 見出し（h2）：羅針の印 */
-h2{font-family:var(--head);font-weight:400;letter-spacing:.08em;color:var(--navy)}
-h2::before{width:16px;height:16px;border-radius:0;background:none;
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z'/%3E%3C/svg%3E") center/contain no-repeat;
-  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z'/%3E%3C/svg%3E") center/contain no-repeat;
-  background-color:var(--gold2)}
-h3.lg{font-family:var(--head);font-weight:400;letter-spacing:.06em;color:var(--navy)}
-/* カード：古い紙＋ロープの縁 */
-.match,.card{background:linear-gradient(180deg,#FFF9EA,#F6EACB) padding-box,linear-gradient(135deg,#B88A4E,#E8D3A4 40%,#A47C48) border-box;
-  border:2px solid transparent;box-shadow:0 1px 0 rgba(255,255,255,.7) inset,0 6px 16px rgba(80,50,15,.14)}
-.card{border-radius:14px}
-.match{border-radius:12px}
-.match.empty{background:rgba(255,250,235,.4);border:2px dashed var(--line)}
-.courthead span{font-family:var(--head);font-weight:400;letter-spacing:.2em;box-shadow:0 3px 0 rgba(0,0,0,.18)}
-.courthead .a{background:linear-gradient(180deg,#2A6492,#173E61)}.courthead .b{background:linear-gradient(180deg,#B8352C,#7E1B16)}
-.court.a i{background:var(--court-a)}.court.b i{background:var(--court-b)}
-.time{font-family:var(--head);font-style:normal;font-weight:400;background:none;color:var(--gold3);-webkit-text-fill-color:var(--gold3)}
+:root[data-theme="dark"] body{background:
+  radial-gradient(80% 45% at 50% 0%,rgba(31,79,216,.18),transparent 70%),
+  radial-gradient(60% 40% at 100% 100%,rgba(229,50,45,.10),transparent 70%),
+  var(--bg)}
+body::before{background:#08080A}
+/* 見出し：黒い海賊旗 */
+header.top{background:#0B0B0E;color:#F3EFE6;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 6px 18px rgba(0,0,0,.35);overflow-x:clip}
+header.top::after{height:4px;bottom:0;animation:none;background:repeating-linear-gradient(90deg,var(--red) 0 24px,var(--yellow) 24px 48px,var(--blue) 48px 72px,#fff 72px 96px)}
+.top .wrap{position:relative;padding-block:12px 0;gap:4px}
+.compass{display:none}
+.brand{padding-right:54px;padding-bottom:4px}
+.brand h1{font-family:var(--head);font-style:normal;font-weight:400;font-size:28px;letter-spacing:.02em;color:#fff;-webkit-text-fill-color:#fff;background:none;animation:none;filter:none;
+  text-shadow:3px 3px 0 var(--red)}
+.brand .sub{color:#D9D3C7;font-size:11.5px}
+.meta{color:#D9D3C7;font-weight:700;flex-wrap:wrap}
+.live.on{background:#3BE07A;box-shadow:0 0 0 3px rgba(59,224,122,.25)}
+.visits{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:1px 8px;font-size:10.5px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+.visits b{color:var(--yellow);font-size:12px}
+.fleet{overflow:hidden;margin:4px calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;padding:6px 0 10px;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.fleet .trk{display:flex;gap:8px;width:max-content;animation:fleet 60s linear infinite}
+.fleet img{width:30px;height:30px;border-radius:4px;display:block}
+@keyframes fleet{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.fleet .trk{animation:none}}
+.courthead{top:calc(env(safe-area-inset-top,0px) + var(--hh))}
+main .wrap{padding-top:22px}
+/* 見出し（h2）：骸骨マーク */
+h2{font-family:var(--head);font-weight:400;letter-spacing:.03em;color:var(--ink)}
+h2::before{width:24px;height:24px;border-radius:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg stroke='%23E5322D' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M4 5l16 15M20 5L4 20'/%3E%3C/g%3E%3Ccircle cx='12' cy='10' r='6.6' fill='%23E5322D'/%3E%3Crect x='8.6' y='13' width='6.8' height='4.6' rx='1.4' fill='%23E5322D'/%3E%3Ccircle cx='9.6' cy='10' r='1.8' fill='%23111'/%3E%3Ccircle cx='14.4' cy='10' r='1.8' fill='%23111'/%3E%3C/svg%3E") center/contain no-repeat}
+h3.lg{font-family:var(--head);font-weight:400;color:var(--ink)}
+.note,.legend,.src{color:var(--muted)}
+/* カード：旗のステッカー */
+.match,.card{background:var(--surface);border:var(--cb);box-shadow:var(--cs)}
+.card{border-radius:14px}.match{border-radius:12px}
+.match.empty{background:transparent;border:1.5px dashed var(--line);box-shadow:none}
+.courthead span{font-family:var(--head);font-weight:400;letter-spacing:.1em;border-radius:8px;border:2px solid #111114;box-shadow:2px 2px 0 #111114}
+.courthead .a{background:var(--blue)}.courthead .b{background:var(--red)}
+.court.a i{background:var(--blue)}.court.b i{background:var(--red)}
+.time{font-family:var(--head);font-style:normal;font-weight:400;background:none;color:var(--ink);-webkit-text-fill-color:var(--ink)}
 .slot-h .lbl{color:var(--muted)}
-.sc{font-family:var(--head);font-style:normal;font-weight:400;color:#B9A27A}
-.row.w .tn{color:var(--ink)}.row.w .sc{color:var(--pink)}
-.row.w .tn::after{content:"勝";font-style:normal;background:linear-gradient(180deg,#D23A2E,#8E1E17);border-radius:50%;width:16px;height:16px;display:inline-grid;place-items:center;padding:0;font-size:9.5px;letter-spacing:0;vertical-align:1px}
-.pill{background:linear-gradient(180deg,#D23A2E,#8E1E17);box-shadow:0 0 0 2px rgba(255,240,200,.8)}
-.break{background:linear-gradient(90deg,#14263D,#1E4E6E);color:#F7E9C6;font-family:var(--head);font-weight:400;letter-spacing:.12em;border:2px solid #A47C48}
-.break .time{color:var(--gold1);-webkit-text-fill-color:var(--gold1)}
-.tbl-wrap{background:#FFF9EA;border-color:var(--line)}
-th{background:#EADBB8;color:var(--gold3)}
-.rk{font-family:var(--head);font-style:normal;font-weight:400}.rk1{color:var(--pink)}
-.adv td{background:rgba(46,125,154,.09)}
-.mx thead th{color:var(--sea)}
-.mx td.name .no{color:var(--sea)}
-h3.lg .done{background:var(--ok-soft);color:var(--ok)}
-.champline b{font-family:var(--head);font-weight:400;font-size:20px;background:linear-gradient(180deg,#F6D77A,#C8931E 55%,#8A5A12);-webkit-background-clip:text;background-clip:text;color:transparent}
-.bk text{fill:var(--ink)}.bk .box{fill:#FFF9EA;stroke:#B88A4E}.bk .scbg{fill:var(--navy)}.bk .sct2{fill:var(--pink)}
-.bk .ls{fill:#B09A74}
-.legend{color:var(--muted)}
-.vp{background:var(--sea)}
-.sel,input[type=text],input[type=password],input[type=number]{background:#FFFBF0;border-color:var(--line)}
-.btn{background:#FFF9EA;border-color:var(--line)}
-.btn.primary{background:linear-gradient(180deg,#F6D77A,#C8931E 60%,#9C6A18);color:#2B1B10;border-color:#8A5A12;box-shadow:0 3px 0 #6E4610,0 6px 14px rgba(138,90,18,.35)}
-.progress b{background:linear-gradient(90deg,#8A5A12,#F6D77A,#C8931E)}
-.adminbar{background:linear-gradient(90deg,#7E1B16,#B8352C)}
-.adminbar::before{background:linear-gradient(180deg,#F6D77A,#C8931E)}
-.toast{background:var(--navy);color:#F7E9C6;border:1px solid var(--gold2);box-shadow:0 8px 24px rgba(14,28,46,.4)}
-/* 下のメニュー：船の甲板 */
-.bottomnav{background:linear-gradient(180deg,#6B4826,#4A2F17);border-top:0}
-.bottomnav::before{height:4px;inset:-4px 0 auto;background:repeating-linear-gradient(90deg,#C9A36A 0 10px,#8E6A3A 10px 12px)}
-.bottomnav button{color:#E6CFA0}
-.bottomnav button[aria-current="page"]{color:#FFE48A}
-.bottomnav button[aria-current="page"] svg{filter:drop-shadow(0 0 6px rgba(255,214,110,.75))}
-/* 更新ボタン：金の財宝 */
-.refresh{background:linear-gradient(110deg,#8A5A12,#F6D77A 30%,#C8931E 55%,#FFF1B8 75%,#8A5A12);background-size:300% 100%;color:#2B1B10;
-  box-shadow:0 8px 22px rgba(80,50,15,.45),0 0 0 3px #4A2F17,0 0 0 5px #C9A36A}
+.sc{font-family:var(--head);font-style:normal;font-weight:400;color:#B2AA9B}
+:root[data-theme="dark"] .sc{color:#55535C}
+.row.w .tn{color:var(--ink)}.row.w .sc{color:var(--red)}
+.row.w .tn::after{content:"WIN";font-style:normal;font-family:var(--head);font-weight:400;background:var(--yellow);color:#111;border-radius:4px;font-size:9px;padding:0 5px;letter-spacing:.06em}
+.ref{border-top-color:var(--line)}
+.pill{background:var(--red)}
+.break{background:#0B0B0E;color:#fff;font-family:var(--head);font-weight:400;letter-spacing:.06em;border:2px solid #111114}
+:root[data-theme="dark"] .break{border-color:#3A3942}
+.break .time{color:var(--yellow);-webkit-text-fill-color:var(--yellow)}
+.tbl-wrap{background:var(--surface);border:var(--cb)}
+th{background:var(--surface2);color:var(--muted)}
+.rk{font-family:var(--head);font-style:normal;font-weight:400}.rk1{color:var(--red)}
+.mx thead th,.mx td.name .no{color:var(--blue)}
+:root[data-theme="dark"] .mx thead th,:root[data-theme="dark"] .mx td.name .no{color:#7FA6FF}
+.mx .x{color:var(--muted)}
+.champline b{font-family:var(--head);font-weight:400;font-size:22px;color:var(--red);-webkit-text-fill-color:var(--red);background:none}
+.bk text{fill:var(--ink)}.bk .box{fill:var(--surface);stroke:var(--ink);stroke-opacity:.55}.bk .scbg{fill:#111114}.bk .sct2{fill:var(--red)}.bk .ls{fill:var(--muted)}.bk .sub{fill:var(--muted)}
+:root[data-theme="dark"] .bk .scbg{fill:#2C2B33}
+.vp{background:var(--blue)}
+.lgtag{border-color:var(--line)}
+.sel,input[type=text],input[type=url],input[type=password],input[type=number],.btn,.elist button,.step button,.mini{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.btn{border:var(--cb);box-shadow:2px 2px 0 #111114}
+:root[data-theme="dark"] .btn{box-shadow:none}
+.btn.primary{background:var(--red);color:#fff;border:2px solid #111114}
+.progress b{background:linear-gradient(90deg,var(--red),var(--yellow))}
+.adminbar{background:var(--red)}
+.adminbar::before{background:var(--yellow)}
+.alert{background:transparent}
+.toast{background:#111114;color:#fff;border:2px solid var(--yellow)}
+dl.info dt{color:var(--red)}
+ul.rules li::marker{color:var(--red)}
+.chip{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+/* 下のメニュー：黒い旗布 */
+.bottomnav{background:#0B0B0E;border-top:0}
+.bottomnav::before{height:4px;inset:-4px 0 auto;background:repeating-linear-gradient(90deg,var(--red) 0 24px,var(--yellow) 24px 48px,var(--blue) 48px 72px,#fff 72px 96px)}
+.bottomnav button{color:#8F8A82}
+.bottomnav button[aria-current="page"]{color:var(--yellow)}
+.bottomnav button[aria-current="page"] svg{filter:drop-shadow(0 0 6px rgba(255,194,26,.6))}
+/* 更新ボタン */
+.refresh{background:var(--red);background-size:auto;animation:none;color:#fff;border:2px solid #111114;box-shadow:4px 4px 0 #111114}
+:root[data-theme="dark"] .refresh{border-color:#fff;box-shadow:0 0 0 3px rgba(229,50,45,.35),0 10px 24px rgba(0,0,0,.6)}
 .refresh svg{filter:none}
-.refresh .ring{border-color:rgba(200,147,30,.7)}
-.refresh.done{background:linear-gradient(110deg,#1F6B3A,#3FA068);color:#fff}
+.refresh .ring{border-color:rgba(229,50,45,.6)}
+.refresh.done{background:var(--green)}
 .linkbtn{color:var(--muted)}
-.rank-list li:nth-child(1) .rk{color:#B8860B;font-size:22px}.rank-list li:nth-child(2) .rk{color:#7D8A96;font-size:20px}.rank-list li:nth-child(3) .rk{color:#A0522D;font-size:19px}
+.rank-list li{border-bottom-color:var(--line)}
+.rank-list li:nth-child(1) .rk{color:#D99A00;font-size:24px}.rank-list li:nth-child(2) .rk{color:#8C949C;font-size:21px}.rank-list li:nth-child(3) .rk{color:#B5652E;font-size:20px}
 .rank-list li:nth-child(-n+3) .tn{font-size:16px}
-.top .wrap{padding-block:12px 4px}
+.qr{background:#fff}
+/* 右上：ライト／ダーク切り替え */
+.themesw{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:max(12px,env(safe-area-inset-right,0px));z-index:9;display:flex;padding:3px;gap:2px;border-radius:999px;background:#1C1C22;border:1.5px solid rgba(255,255,255,.22)}
+.themesw button{width:32px;height:30px;border:0;border-radius:999px;background:transparent;color:#8F8A82;display:grid;place-items:center;cursor:pointer;padding:0}
+.themesw button svg{width:17px;height:17px}
+.themesw button[aria-pressed="true"]{background:var(--yellow);color:#111}
+.themesw button:focus-visible{outline:2px solid #fff;outline-offset:1px}
+.brand{padding-right:0;row-gap:2px}.brand h1{padding-right:86px}
+.brand .sub{font-size:10.5px;letter-spacing:.02em}
+/* ===== オープニング：24の海賊旗 ===== */
+#intro{position:fixed;inset:0;z-index:50;background:#060608;display:grid;place-items:center;overflow:hidden;cursor:pointer;
+  transition:clip-path .7s cubic-bezier(.7,0,.2,1);clip-path:inset(0 0 0 0)}
+#intro.out{clip-path:inset(0 0 100% 0)}
+#intro .ig{display:grid;grid-template-columns:repeat(4,1fr);gap:min(3vw,18px);width:min(92vw,560px);transition:transform 1.2s ease,filter 1.2s ease,opacity 1.2s ease}
+@media (min-aspect-ratio:4/3){#intro .ig{grid-template-columns:repeat(6,1fr);width:min(86vw,820px)}}
+#intro .ig img{width:100%;height:auto;aspect-ratio:1;display:block;opacity:0;transform:translate(var(--x),var(--y)) scale(.2) rotate(var(--r));border-radius:6px}
+#intro.go .ig img{animation:flagin .62s cubic-bezier(.2,1.5,.4,1) forwards;animation-delay:var(--d)}
+@keyframes flagin{to{opacity:1;transform:none}}
+#intro.title .ig{transform:scale(1.12);filter:blur(2px) saturate(1.2);opacity:.28}
+#intro .it{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;text-align:center;pointer-events:none;padding:16px}
+#intro .it>*{opacity:0}
+#intro .k{font-family:var(--head);color:var(--yellow);letter-spacing:.4em;font-size:13px;margin-bottom:6px}
+#intro h1{margin:0;font-family:var(--head);font-weight:400;color:#fff;font-size:clamp(54px,17vw,128px);line-height:1;letter-spacing:.02em;
+  text-shadow:4px 4px 0 var(--red),8px 8px 0 #000;-webkit-text-stroke:2px #000;paint-order:stroke fill}
+#intro .y{font-family:var(--head);color:#111;background:var(--yellow);font-size:clamp(20px,6vw,34px);padding:0 14px;margin-top:10px;transform:rotate(-3deg);border:3px solid #000}
+#intro p{color:#E8E2D6;font-weight:700;letter-spacing:.2em;margin:16px 0 0;font-size:13px}
+#intro.title .k{animation:fadeup .4s .25s ease forwards}
+#intro.title h1{animation:slam .42s cubic-bezier(.2,1.4,.4,1) forwards}
+#intro.title .y{animation:stamp .35s .3s cubic-bezier(.2,1.6,.4,1) forwards}
+#intro.title p{animation:fadeup .5s .55s ease forwards}
+#intro.title{animation:shake .38s .3s linear}
+#intro .flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#intro.title .flash{animation:flash .45s .28s ease-out}
+@keyframes slam{0%{opacity:0;transform:scale(3.2) rotate(-6deg)}100%{opacity:1;transform:none}}
+@keyframes stamp{0%{opacity:0;transform:scale(2.4) rotate(-14deg)}100%{opacity:1;transform:rotate(-3deg)}}
+@keyframes fadeup{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+@keyframes flash{0%{opacity:.7}100%{opacity:0}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translate(-7px,4px)}40%{transform:translate(6px,-5px)}60%{transform:translate(-4px,3px)}80%{transform:translate(3px,-2px)}}
+#intro .skip{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));background:transparent;color:#BDB6A9;border:1.5px solid #4A4852;border-radius:999px;padding:7px 16px;font-weight:700;font-size:12px;letter-spacing:.2em;cursor:pointer}
+@media (prefers-reduced-motion:reduce){
+  #intro .ig img{opacity:1;transform:none}#intro.go .ig img{animation:none}
+  #intro.title .ig{transform:none;filter:none}#intro.title{animation:none}#intro.title .flash{animation:none}
+  #intro.title .it>*{animation:fadeup .4s ease forwards}#intro{transition:opacity .5s}#intro.out{clip-path:none;opacity:0}}
 </style>
 </head>
 <body>
+<div id="intro" aria-hidden="true"><div class="ig"><img src="flags/f01.webp" alt="" width="256" height="256"><img src="flags/f02.webp" alt="" width="256" height="256"><img src="flags/f03.webp" alt="" width="256" height="256"><img src="flags/f04.webp" alt="" width="256" height="256"><img src="flags/f05.webp" alt="" width="256" height="256"><img src="flags/f06.webp" alt="" width="256" height="256"><img src="flags/f07.webp" alt="" width="256" height="256"><img src="flags/f08.webp" alt="" width="256" height="256"><img src="flags/f09.webp" alt="" width="256" height="256"><img src="flags/f10.webp" alt="" width="256" height="256"><img src="flags/f11.webp" alt="" width="256" height="256"><img src="flags/f12.webp" alt="" width="256" height="256"><img src="flags/f13.webp" alt="" width="256" height="256"><img src="flags/f14.webp" alt="" width="256" height="256"><img src="flags/f15.webp" alt="" width="256" height="256"><img src="flags/f16.webp" alt="" width="256" height="256"><img src="flags/f17.webp" alt="" width="256" height="256"><img src="flags/f18.webp" alt="" width="256" height="256"><img src="flags/f19.webp" alt="" width="256" height="256"><img src="flags/f20.webp" alt="" width="256" height="256"><img src="flags/f21.webp" alt="" width="256" height="256"><img src="flags/f22.webp" alt="" width="256" height="256"><img src="flags/f23.webp" alt="" width="256" height="256"><img src="flags/f24.webp" alt="" width="256" height="256"></div><div class="flash"></div><div class="it"><div class="k">24 PIRATES</div><h1>頂上決戦</h1><div class="y">2026</div><p>24の海賊団、頂上へ。</p></div><button type="button" class="skip">SKIP ▸</button></div>
+<script>(function(){var el=document.getElementById('intro');if(!el)return;var done=false,ims=el.querySelectorAll('.ig img');
+var ord=[];for(var i=0;i<ims.length;i++)ord.push(i);for(i=ord.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=ord[i];ord[i]=ord[j];ord[j]=t}
+for(i=0;i<ims.length;i++){var s=ims[i].style;s.setProperty('--d',(ord[i]*55)+'ms');s.setProperty('--x',(Math.random()*240-120).toFixed(0)+'px');s.setProperty('--y',(Math.random()*240-120).toFixed(0)+'px');s.setProperty('--r',(Math.random()*120-60).toFixed(0)+'deg')}
+document.documentElement.style.overflow='hidden';
+function end(){if(done)return;done=true;el.classList.add('out');document.documentElement.style.overflow='';setTimeout(function(){el.remove()},800)}
+el.addEventListener('click',end);
+var started=false;function go(){if(started)return;started=true;el.classList.add('go');setTimeout(function(){el.classList.add('title')},1900);setTimeout(end,4200)}
+var n=0;function one(){if(++n>=ims.length)go()}for(i=0;i<ims.length;i++){if(ims[i].complete)one();else{ims[i].onload=one;ims[i].onerror=one}}setTimeout(go,1400);setTimeout(end,7000)})();</script>
+<div class="themesw" role="group" aria-label="表示モード"><button type="button" data-th="light" aria-label="ライトモード"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6"/></svg></button><button type="button" data-th="dark" aria-label="ダークモード"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a8.6 8.6 0 1 0 11.1 11.1z"/></svg></button></div>
+<script>(function(){var w=document.querySelector('.themesw');function sync(){var t=document.documentElement.getAttribute('data-theme');w.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-th')===t?'true':'false')})}sync();
+w.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=b.getAttribute('data-th');document.documentElement.setAttribute('data-theme',t);try{localStorage.setItem('cj-theme',t)}catch(x){}sync()})})();</script>
 <div id="app"></div>
 <script>
 (function(){
@@ -341,6 +417,7 @@ var FINAL=[["23A","w"],["23A","l"],["22A","w"],["22A","l"],["21A","w"],["21A","l
 // スプレッドシート（試合進行表）から取り込んだ結果。管理者ページで入力した結果があればそちらを優先
 var BASE={"p1A": {"a": 4, "b": 4, "w": null}, "p1B": {"a": 8, "b": 0, "w": null}, "p2A": {"a": 6, "b": 5, "w": null}, "p2B": {"a": 5, "b": 1, "w": null}, "p3A": {"a": 6, "b": 2, "w": null}, "p3B": {"a": 7, "b": 0, "w": null}, "p4A": {"a": 5, "b": 2, "w": null}, "p4B": {"a": 6, "b": 3, "w": null}, "p5A": {"a": 3, "b": 4, "w": null}, "p5B": {"a": 4, "b": 6, "w": null}, "p6A": {"a": 1, "b": 6, "w": null}, "p6B": {"a": 5, "b": 2, "w": null}, "p7A": {"a": 6, "b": 6, "w": null}, "p7B": {"a": 6, "b": 5, "w": null}, "p8A": {"a": 6, "b": 3, "w": null}, "p8B": {"a": 8, "b": 0, "w": null}, "p9A": {"a": 7, "b": 2, "w": null}, "p9B": {"a": 6, "b": 2, "w": null}, "p10A": {"a": 5, "b": 2, "w": null}, "p10B": {"a": 5, "b": 1, "w": null}, "p11A": {"a": 3, "b": 6, "w": null}, "p11B": {"a": 2, "b": 6, "w": null}, "p12A": {"a": 5, "b": 3, "w": null}, "p12B": {"a": 5, "b": 4, "w": null}, "p13A": {"a": 6, "b": 0, "w": null}, "p13B": {"a": 6, "b": 2, "w": null}, "p14A": {"a": 6, "b": 6, "w": null}, "p14B": {"a": 6, "b": 3, "w": null}, "p15A": {"a": 7, "b": 1, "w": null}, "p15B": {"a": 4, "b": 3, "w": null}, "p16A": {"a": 3, "b": 3, "w": null}, "p16B": {"a": 4, "b": 4, "w": null}, "p17A": {"a": 4, "b": 5, "w": null}, "p17B": {"a": 3, "b": 5, "w": null}, "p18A": {"a": 4, "b": 4, "w": null}, "p18B": {"a": 5, "b": 4, "w": null}, "t1A": {"a": 6, "b": 1, "w": null}, "t1B": {"a": 0, "b": 7, "w": null}, "t2A": {"a": 5, "b": 3, "w": null}, "t2B": {"a": 3, "b": 4, "w": null}, "t3A": {"a": 4, "b": 2, "w": null}, "t3B": {"a": 8, "b": 0, "w": null}, "t4B": {"a": 6, "b": 5, "w": null}, "t4A": {"a": 7, "b": 0, "w": null}, "t5A": {"a": 3, "b": 7, "w": null}, "t5B": {"a": 6, "b": 3, "w": null}, "t6A": {"a": 4, "b": 7, "w": null}, "t6B": {"a": 6, "b": 4, "w": null}, "t7A": {"a": 4, "b": 5, "w": null}, "t7B": {"a": 4, "b": 1, "w": null}, "t8A": {"a": 5, "b": 2, "w": null}, "t8B": {"a": 5, "b": 1, "w": null}, "t9A": {"a": 7, "b": 2, "w": null}, "t9B": {"a": 2, "b": 3, "w": null}, "t10A": {"a": 8, "b": 0, "w": null}, "t10B": {"a": 4, "b": 6, "w": null}, "t11A": {"a": 7, "b": 1, "w": null}, "t11B": {"a": 6, "b": 5, "w": null}, "t12A": {"a": 6, "b": 4, "w": null}, "t12B": {"a": 2, "b": 7, "w": null}, "t13A": {"a": 0, "b": 6, "w": null}, "t13B": {"a": 6, "b": 4, "w": null}, "t14A": {"a": 4, "b": 5, "w": null}, "t14B": {"a": 5, "b": 2, "w": null}, "t15A": {"a": 7, "b": 1, "w": null}, "t15B": {"a": 4, "b": 5, "w": null}, "t16A": {"a": 4, "b": 5, "w": null}, "t16B": {"a": 6, "b": 3, "w": null}, "t17A": {"a": 7, "b": 2, "w": null}, "t17B": {"a": 3, "b": 6, "w": null}, "t18A": {"a": 2, "b": 4, "w": null}, "t18B": {"a": 0, "b": 8, "w": null}, "t19A": {"a": 6, "b": 2, "w": null}, "t19B": {"a": 4, "b": 3, "w": null}, "t20A": {"a": 2, "b": 6, "w": null}, "t20B": {"a": 5, "b": 4, "w": null}, "t21A": {"a": 2, "b": 4, "w": null}, "t21B": {"a": 2, "b": 3, "w": null}, "t22A": {"a": 2, "b": 6, "w": null}, "t23A": {"a": 2, "b": 0, "w": null}};
 var BASE_AT="11/15 16:07";
+var VIS=null, FLEET=(function(){var h="";for(var k=0;k<2;k++)for(var i=1;i<=24;i++)h+='<img src="flags/f'+(i<10?"0":"")+i+'.webp" alt="" width="30" height="30" loading="lazy" decoding="async">';return h})();
 var state={scores:{},adj:{}}, sb=null, cred=null, loaded=false, online=false, loadError="";
 function ss(k,v){try{if(v===undefined)return sessionStorage.getItem(k);if(v===null)sessionStorage.removeItem(k);else sessionStorage.setItem(k,v);}catch(e){return null}}
 function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v);}catch(e){return null}}
@@ -558,7 +635,7 @@ var SV='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width=
 var ICONS={sched:SV+'<rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4M12 9v12"/></svg>',league:SV+'<path d="M8 21V11H3v10h5zM15 21V4H9v17h6zM21 21v-7h-5v7h5z"/></svg>',tour:SV+'<path d="M3 4h5v6h5M3 20h5v-6h5M13 7v10M13 12h8"/></svg>',info:SV+'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h6"/></svg>',entry:SV+'<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>',settings:SV+'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>'};
 var PUB=[['sched','試合'],['league','予選'],['tour','トーナメント'],['info','要項']];
 var ADM=[['entry','入力'],['sched','試合'],['league','予選'],['tour','トーナメント'],['settings','設定']];
-function render(){try{render0()}catch(e){console.error(e);SHEET={};try{render0()}catch(e2){}}}
+function render(){try{render0()}catch(e){console.error(e);SHEET={};try{render0()}catch(e2){}}try{var hd=document.querySelector("header.top");if(hd)document.documentElement.style.setProperty("--hh",hd.offsetHeight+"px")}catch(e){}}
 function render0(){
   var C=compute(),admin=isAdmin(),tabs=admin?ADM:PUB;
   if(tab!=='login'&&!tabs.some(function(t){return t[0]===tab}))tab=tabs[0][0];
@@ -566,11 +643,11 @@ function render0(){
   var view=tab==='sched'?viewSched(C):tab==='league'?viewLeague(C):tab==='tour'?viewTour(C):tab==='info'?viewInfo():tab==='login'?viewLogin():tab==='entry'?viewEntry(C):viewSettings();
   if(loadError)view='<div class="alert">'+esc(loadError)+'</div>'+view;else if(!loaded)view='<p class="note">最新の結果を読み込んでいます…</p>'+view;
   var ae=document.activeElement,keep=ae&&ae.id&&ae.tagName==='INPUT'&&ae.type!=='radio'?{id:ae.id,v:ae.value}:null;
-  document.getElementById('app').innerHTML='<header class="top"><div class="wrap"><svg class="compass" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="29" fill="none" stroke="#C8931E" stroke-width="2"/><circle cx="32" cy="32" r="24" fill="none" stroke="#C8931E" stroke-width=".8" stroke-dasharray="2 3"/><path d="M32 6l3 23-3 3-3-3z M58 32l-23 3-3-3 3-3z M32 58l-3-23 3-3 3 3z M6 32l23-3 3 3-3 3z" fill="#E9D7AC" opacity=".5"/><g class="needle"><path d="M32 10l4 22h-8z" fill="#D23A2E"/><path d="M32 54l-4-22h8z" fill="#F7E9C6"/></g><circle cx="32" cy="32" r="2.5" fill="#C8931E"/><text x="32" y="5.5" font-size="6" text-anchor="middle" fill="#F6D77A">N</text></svg><div class="brand"><div><h1>頂上決戦2026</h1><div class="sub">2026年11月15日（日）・プロシードアリーナHIKONE</div></div><span class="meta"><span class="live'+(online?' on':'')+'"></span>'+(online?'LIVE 航海中':'速報ページ')+'</span></div></div></header>'+
+  document.getElementById('app').innerHTML='<header class="top"><div class="wrap"><div class="brand"><div><h1>頂上決戦2026</h1><div class="sub">2026年11月15日（日）・プロシードアリーナHIKONE</div></div><span class="meta"><span class="live'+(online?' on':'')+'"></span>'+(online?'LIVE 航海中':'速報ページ')+(VIS?'<span class="visits" title="アクセス数">⚓ 訪問 <b>'+Number(VIS.total).toLocaleString('ja-JP')+'</b>（今日 '+Number(VIS.today).toLocaleString('ja-JP')+'）</span>':'')+'</span></div><div class="fleet" aria-hidden="true"><div class="trk" style="animation-delay:-'+((Date.now()/1000)%60).toFixed(2)+'s">'+FLEET+'</div></div></div></header>'+
    (admin?'<div class="adminbar"><div class="wrap"><span>管理者ページ</span><button type="button" id="logout">ログアウト</button></div></div>':'')+'<main><div class="wrap">'+view+'</div></main>'+
    (admin||tab==='login'?'':'<footer><div class="wrap"><button type="button" class="linkbtn" data-tab="login">管理者ログイン</button></div></footer>')+
    '<button type="button" class="refresh" id="refresh" aria-label="最新情報に更新"><span class="ring" aria-hidden="true"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="1.8"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4M4.6 4.6l2.8 2.8M16.6 16.6l2.8 2.8M4.6 19.4l2.8-2.8M16.6 7.4l2.8-2.8"/></svg><span class="t"><span>最新情報に更新</span><small>'+(sheetAt?'記録表 '+sheetAt+' 取得':(lastSync?'最終更新 '+lastSync:'タップで最新の結果へ'))+'</small></span></button>'+'<nav class="bottomnav"><div class="in">'+tabs.map(function(t){return '<button type="button" data-tab="'+t[0]+'"'+(tab===t[0]?' aria-current="page"':'')+'>'+ICONS[t[0]]+'<span>'+t[1]+'</span></button>'}).join('')+'</div></nav>'+
-   '<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g-champ" x1="0" x2="1"><stop offset="0" stop-color="#8A5A12"/><stop offset=".5" stop-color="#E2B44A"/><stop offset="1" stop-color="#8A5A12"/></linearGradient></defs></svg>';
+   '<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="g-champ" x1="0" x2="1"><stop offset="0" stop-color="#E5322D"/><stop offset="1" stop-color="#FFC21A"/></linearGradient></defs></svg>';
   if(keep){var el=document.getElementById(keep.id);if(el){el.value=keep.v;el.focus()}}
   if(tab==='settings'){var q=document.getElementById('qr');if(q&&window.QRCode){q.innerHTML='';new QRCode(q,{text:location.origin+location.pathname,width:200,height:200,colorDark:'#0B0B1F',colorLight:'#fff'})}}
 }
@@ -667,7 +744,7 @@ document.addEventListener('click',function(e){
 render();
 if(ss('cj-refreshed')){ss('cj-refreshed',null);var sy=+(ss('cj-scroll')||0);setTimeout(function(){window.scrollTo(0,sy);toast('最新の結果に更新しました')},300)}
 if(!CFG.SUPABASE_URL||!window.supabase){loadError='接続の準備ができていません。';render()}
-else{sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:false}});loadAll();subscribe();loadSheet().then(function(ok){if(ok)render()});setInterval(function(){if(!document.hidden)loadSheet().then(function(ok){if(ok)render()})},60000);
+else{sb=window.supabase.createClient(CFG.SUPABASE_URL,CFG.SUPABASE_ANON_KEY,{auth:{persistSession:false}});var fresh=!ss('cj-visited');sb.rpc('cj26_hit',{p_inc:fresh}).then(function(r){if(r&&!r.error&&r.data){if(fresh)ss('cj-visited','1');VIS=r.data;render()}},function(){});loadAll();subscribe();loadSheet().then(function(ok){if(ok)render()});setInterval(function(){if(!document.hidden)loadSheet().then(function(ok){if(ok)render()})},60000);
   document.addEventListener('visibilitychange',function(){if(!document.hidden)loadAll()});setInterval(function(){if(!document.hidden)loadAll()},30000)}
 })();
 </script>
